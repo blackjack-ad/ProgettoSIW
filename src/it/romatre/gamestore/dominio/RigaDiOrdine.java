@@ -2,21 +2,21 @@ package it.romatre.gamestore.dominio;
 
 public class RigaDiOrdine {
 	
-	private long quantità;
+	private long quantita;
 	private DescrizioneProdotto descrizioneProdotto;
 	
-	public RigaDiOrdine(long quantità, DescrizioneProdotto descrizioneProdotto) {
+	public RigaDiOrdine(long quantita, DescrizioneProdotto descrizioneProdotto) {
 		super();
-		this.quantità = quantità;
+		this.quantita = quantita;
 		this.descrizioneProdotto = descrizioneProdotto;
 	}
 
-	public long getQuantità() {
-		return quantità;
+	public long getQuantita() {
+		return quantita;
 	}
 
-	public void setQuantità(long quantità) {
-		this.quantità = quantità;
+	public void setQuantita(long quantita) {
+		this.quantita = quantita;
 	}
 
 	public DescrizioneProdotto getDescrizioneProdotto() {

@@ -3,14 +3,14 @@ package it.romatre.gamestore.dominio;
 public class Indirizzo {
 
 	private String stato;
-	private String città;
+	private String citta;
 	private Integer cap;
 	private String via;
 	
-	public Indirizzo(String stato, String città, Integer cap, String via) {
+	public Indirizzo(String stato, String citta, Integer cap, String via) {
 		super();
 		this.stato = stato;
-		this.città = città;
+		this.citta= citta;
 		this.cap = cap;
 		this.via = via;
 	}
@@ -23,12 +23,12 @@ public class Indirizzo {
 		this.stato = stato;
 	}
 
-	public String getCittà() {
-		return città;
+	public String getCitta() {
+		return citta;
 	}
 
-	public void setCittà(String città) {
-		this.città = città;
+	public void setCitta(String citta) {
+		this.citta = citta;
 	}
 
 	public Integer getCap() {

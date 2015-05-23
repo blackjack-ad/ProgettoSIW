@@ -14,6 +14,7 @@ public class Ordine {
 	private String stato;
 	
 	public Ordine() {
+		this.stato = "aperto";
 		this.dataInizio = new Date();
 		this.dataChiusura = null;
 		this.dataEvasione = null;
@@ -52,5 +53,13 @@ public class Ordine {
 		this.righeDiOrdine = righeDiOrdine;
 	}
 	
+	public void addRigaDiOrdine(RigaDiOrdine r){
+		righeDiOrdine.add(r);
+	}
+	
+	@Override
+	public String toString(){
+		return "Ordine in stato " + stato + " contenente " + righeDiOrdine.size() + " righe";
+	}
 	
 }
