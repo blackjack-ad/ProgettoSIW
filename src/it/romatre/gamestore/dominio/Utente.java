@@ -4,13 +4,14 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Cliente {
+public class Utente {
 
 	private String nome;
 	private String cognome;
 	private Long id;
 	private String telefono;
 	private String email;
+	private String password;
 	private Date dataDiNascita;
 	private Indirizzo indirizzo;
 	private Ordine ordineCorrente;
@@ -19,12 +20,13 @@ public class Cliente {
 	
 	
 	
-	public Cliente(String nome, String cognome, String telefono, String email, Date data, Indirizzo indirizzo) {
+	public Utente(String nome, String cognome, String email, String password, Date data, String telefono, Indirizzo indirizzo) {
 		super();
 		this.nome = nome;
 		this.cognome = cognome;
 		this.telefono = telefono;
 		this.email = email;
+		this.password = password;
 		this.dataDiNascita = data;
 		this.ordini = new HashMap<Long, Ordine>();
 	}
@@ -83,6 +85,14 @@ public class Cliente {
 
 	public void setOrdini(Map<Long, Ordine> ordini) {
 		this.ordini = ordini;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	

@@ -9,14 +9,14 @@ import javax.ejb.EJB;
 public class Azienda {
 	private Map<Long, DescrizioneProdotto> catalogo;
 	private Map<Long, Prodotto> magazzino;
-	private Map<Long, Cliente> anagraficaClienti;
+	private Map<Long, Utente> anagraficaClienti;
 	private Map<Long, Ordine> ordini;
 	private long descrizioneId = 0L;
 	
 	public Azienda() {
 		this.catalogo = new HashMap<Long, DescrizioneProdotto>();
 		this.magazzino = new HashMap<Long, Prodotto>();
-		this.anagraficaClienti = new HashMap<Long, Cliente>();
+		this.anagraficaClienti = new HashMap<Long, Utente>();
 		this.ordini = new HashMap<Long, Ordine>();
 	}
 
@@ -44,11 +44,11 @@ public class Azienda {
 		this.magazzino = magazzino;
 	}
 
-	public Map<Long, Cliente> getAnagraficaClienti() {
+	public Map<Long, Utente> getAnagraficaClienti() {
 		return anagraficaClienti;
 	}
 
-	public void setAnagraficaClienti(Map<Long, Cliente> anagraficaClienti) {
+	public void setAnagraficaClienti(Map<Long, Utente> anagraficaClienti) {
 		this.anagraficaClienti = anagraficaClienti;
 	}
 

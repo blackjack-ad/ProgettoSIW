@@ -2,7 +2,7 @@ package it.romatre.gamestore.dominio;
 
 public class Portale {
 	private Azienda azienda;
-	private Cliente clienteCorrente;
+	private Utente clienteCorrente;
 	
 	public Portale(Azienda azienda) {
 		super();
@@ -17,11 +17,11 @@ public class Portale {
 		this.azienda = azienda;
 	}
 
-	public Cliente getClienteCorrente() {
+	public Utente getClienteCorrente() {
 		return clienteCorrente;
 	}
 
-	public void setClienteCorrente(Cliente clienteCorrente) {
+	public void setClienteCorrente(Utente clienteCorrente) {
 		this.clienteCorrente = clienteCorrente;
 	}
 	
