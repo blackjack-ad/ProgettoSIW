@@ -1,5 +1,9 @@
 package it.romatre.gamestore.controller;
 
+
+import java.util.List;
+
+import it.romatre.gamestore.dominio.Azienda;
 import it.romatre.gamestore.dominio.DescrizioneProdotto;
 import it.romatre.gamestore.facade.DescrizioneProdottoFacade;
 
@@ -13,16 +17,28 @@ public class DescrizioneProdottoController {
 
 	@EJB
 	private DescrizioneProdottoFacade descrizioneProdottoFacade;
+	private Long id; 
+	private Azienda azienda; 
 	private String nome;
-	private Float prezzo;
+	private Double prezzo;
 	private String descrizione;
 	private DescrizioneProdotto descrizioneProdotto;
-	
+	private List<DescrizioneProdotto> descrizioneProdotti;
+
 	public String createDescrizioneProdotto() {
 		this.descrizioneProdotto = descrizioneProdottoFacade.createDescrizioneProdotto(nome, prezzo, descrizione);
 		return "product"; 
 	}
+
+	public String listDescrizioneProdotti() {
+		this.descrizioneProdotti = descrizioneProdottoFacade.getAllDescrizioneProdotti();
+		return "products"; 
+	}
 	
+	public List<DescrizioneProdotto> getDescrizioneProdotti(){
+		return this.descrizioneProdotti;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -31,11 +47,11 @@ public class DescrizioneProdottoController {
 		this.nome = nome;
 	}
 
-	public Float getPrezzo() {
+	public Double getPrezzo() {
 		return prezzo;
 	}
 
-	public void setPrezzo(Float prezzo) {
+	public void setPrezzo(Double prezzo) {
 		this.prezzo = prezzo;
 	}
 
@@ -45,6 +61,14 @@ public class DescrizioneProdottoController {
 
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public DescrizioneProdottoFacade getDescrizioneProdottoFacade() {
@@ -56,6 +80,16 @@ public class DescrizioneProdottoController {
 		this.descrizioneProdottoFacade = descrizioneProdottoFacade;
 	}
 
+	
+	public String findDescrizioneProdotto() {
+		this.descrizioneProdotto = descrizioneProdottoFacade.getDescrizioneProdotto(id);
+		return "product";
+	}
+	
+	public String findDescrizioneProdotto(Long id) {
+		this.descrizioneProdotto = descrizioneProdottoFacade.getDescrizioneProdotto(id);
+		return "product";
+	}	
 	public DescrizioneProdotto getDescrizioneProdotto() {
 		return descrizioneProdotto;
 	}

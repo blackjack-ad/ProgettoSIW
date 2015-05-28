@@ -3,11 +3,15 @@ package it.romatre.gamestore.dominio;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.ejb.EJB;
+
+@EJB
 public class Azienda {
 	private Map<Long, DescrizioneProdotto> catalogo;
 	private Map<Long, Prodotto> magazzino;
 	private Map<Long, Cliente> anagraficaClienti;
 	private Map<Long, Ordine> ordini;
+	private long descrizioneId = 0L;
 	
 	public Azienda() {
 		this.catalogo = new HashMap<Long, DescrizioneProdotto>();
@@ -23,7 +27,15 @@ public class Azienda {
 	public void setCatalogo(Map<Long, DescrizioneProdotto> catalogo) {
 		this.catalogo = catalogo;
 	}
+	
+	
+	
+	public void add2Catalogo(DescrizioneProdotto dp){
+		catalogo.put(descrizioneId++, dp);
+	}
+	
 
+	
 	public Map<Long, Prodotto> getMagazzino() {
 		return magazzino;
 	}

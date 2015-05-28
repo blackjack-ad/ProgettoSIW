@@ -57,8 +57,10 @@
 							<div class="collapse navbar-collapse"
 								id="bs-example-navbar-collapse-1">
 								<ul class="nav navbar-nav">
+								
 									<li><a href="#">Accedi come utente</a></li>
-									<li><a href="#adminPage.jsp">Accedi come
+									
+									<li><a href="adminPage.jsp">Accedi come
 											amministratore</a></li>
 
 								</ul>

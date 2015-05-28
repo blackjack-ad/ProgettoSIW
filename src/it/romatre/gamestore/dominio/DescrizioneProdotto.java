@@ -1,20 +1,34 @@
 package it.romatre.gamestore.dominio;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class DescrizioneProdotto {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	private String nome;
-	private Double prezzo;
-	private String descrizione;
 	
+	@Column(nullable = false)
+	private String nome;
+
+	private Double prezzo;
+
+	@Column(length = 2000,nullable=false)
+	private String descrizione;
+
 	public DescrizioneProdotto(String nome, double prezzo, String descrizione) {
 		super();
 		this.nome = nome;
 		this.prezzo = prezzo;
 		this.descrizione = descrizione;
 	}
-	
-	
+
+
 	public String getNome() {
 		return nome;
 	}
@@ -34,5 +48,13 @@ public class DescrizioneProdotto {
 		this.descrizione = descrizione;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	
 }

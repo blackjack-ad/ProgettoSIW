@@ -1,8 +1,8 @@
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-	pageEncoding="US-ASCII"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>nuovaDescrizioneProdotto</title>
+<title>Catalogo</title>
 
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -30,32 +30,6 @@
 
 </head>
 <body>
-	<f:view>
-
-		<h:form>
-			<div>
-				Nome:
-				<h:inputText value="#{descrizioneProdottoController.nome}" />
-			</div>
-			<div>
-				Prezzo:
-				<h:inputText value="#{descrizioneProdottoController.prezzo}" />
-			</div>
-			<div>
-				Descrizione:
-				<h:inputText value="#{descrizioneProdottoController.descrizione}" />
-			</div>
-			<div>
-				<h:commandButton value="Inserisci"
-					action="#{descrizioneProdottoController.createDescrizioneProdotto}" />
-			</div>
-			<h:commandLink
-				action="#{descrizioneProdottoController.listDescrizioneProdotti}"
-				value="List all Products" />
-		</h:form>
-
-	</f:view>
 
 </body>
 </html>
-

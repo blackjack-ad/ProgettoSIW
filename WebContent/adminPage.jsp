@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-	pageEncoding="US-ASCII"%>
-<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
-<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +9,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>nuovaDescrizioneProdotto</title>
+<title>Pagina dell'amministratore</title>
 
 <!-- Bootstrap core CSS -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -27,35 +25,16 @@
 <link
 	href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,700,100italic'
 	rel='stylesheet' type='text/css'>
-
+</head>
 </head>
 <body>
-	<f:view>
+	<button type="button" class="btn btn-success"
+		onclick="location.href='faces/nuovaDescrizioneProdotto.jsp'">Inserisci
+		prodotto nel catalogo</button>
 
-		<h:form>
-			<div>
-				Nome:
-				<h:inputText value="#{descrizioneProdottoController.nome}" />
-			</div>
-			<div>
-				Prezzo:
-				<h:inputText value="#{descrizioneProdottoController.prezzo}" />
-			</div>
-			<div>
-				Descrizione:
-				<h:inputText value="#{descrizioneProdottoController.descrizione}" />
-			</div>
-			<div>
-				<h:commandButton value="Inserisci"
-					action="#{descrizioneProdottoController.createDescrizioneProdotto}" />
-			</div>
-			<h:commandLink
-				action="#{descrizioneProdottoController.listDescrizioneProdotti}"
-				value="List all Products" />
-		</h:form>
+	<button type="button" class="btn btn-success">Inserisci
+		prodotto nel magazzino</button>
 
-	</f:view>
-
+	<button type="button" class="btn btn-success">Evadi Ordine</button>
 </body>
 </html>
-

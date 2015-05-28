@@ -11,5 +11,5 @@
     <managed-bean-class>it.romatre.gamestore.controller.DescrizioneProdottoController</managed-bean-class>
     <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
-
+    
 </faces-config>
