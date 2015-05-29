@@ -3,7 +3,7 @@ package it.romatre.gamestore.controller;
 import java.util.List;
 
 import it.romatre.gamestore.dominio.Utente;
-import it.romatre.gamestore.dominio.UtenteFacade;
+import it.romatre.gamestore.facade.UtenteFacade;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
