@@ -27,6 +27,7 @@ public class DescrizioneProdottoFacade {
 	}
 	
 	public DescrizioneProdotto getDescrizioneProdotto(Long id) {
+		System.out.println(id);
 		DescrizioneProdotto product = em.find(DescrizioneProdotto.class, id);
 		return product;
 	}
