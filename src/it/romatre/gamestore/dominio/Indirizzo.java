@@ -1,13 +1,23 @@
 package it.romatre.gamestore.dominio;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Indirizzo {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
 
 	private String stato;
 	private String citta;
-	private Integer cap;
+	private String cap;
 	private String via;
 	
-	public Indirizzo(String stato, String citta, Integer cap, String via) {
+	public Indirizzo(String stato, String citta, String cap, String via) {
 		super();
 		this.stato = stato;
 		this.citta= citta;
@@ -31,11 +41,11 @@ public class Indirizzo {
 		this.citta = citta;
 	}
 
-	public Integer getCap() {
+	public String getCap() {
 		return cap;
 	}
 
-	public void setCap(Integer cap) {
+	public void setCap(String cap) {
 		this.cap = cap;
 	}
 
@@ -46,7 +56,11 @@ public class Indirizzo {
 	public void setVia(String via) {
 		this.via = via;
 	}
-	
-	
-	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

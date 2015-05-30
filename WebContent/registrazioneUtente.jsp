@@ -76,12 +76,12 @@
 					requiredMessage=" Campo obbligatorio" id="via" />
 				<h:message for="via" />
 			</div>
+			<div>
+				<h:commandButton value="Invia"
+					action="#{utenteController.createUtente}" />
+			</div>
 		</h:form>
 
-		<div>
-			<h:commandButton value="Invia"
-				action="#{controlloreDescrizioneProdotto.createDescrizioneProdotto}" />
-		</div>
 		<div>
 
 			Cliccando sul pulsante "Invia", acconsento che:

@@ -1,6 +1,5 @@
 package it.romatre.gamestore.facade;
 
-
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -27,7 +26,6 @@ public class DescrizioneProdottoFacade {
 	}
 	
 	public DescrizioneProdotto getDescrizioneProdotto(Long id) {
-		System.out.println(id);
 		DescrizioneProdotto product = em.find(DescrizioneProdotto.class, id);
 		return product;
 	}
@@ -37,6 +35,19 @@ public class DescrizioneProdottoFacade {
 		cq.select(cq.from(DescrizioneProdotto.class));
 		List<DescrizioneProdotto> products = em.createQuery(cq).getResultList();
 		return products;
+	}
+	
+	public void updateDescrizioneProdotto(DescrizioneProdotto product) {
+        em.merge(product);
+	}
+	
+    private void deleteDescrizioneProdotto(DescrizioneProdotto product) {
+        em.remove(product);
+    }
+
+	public void deleteDescrizioneProdotto(Long id) {
+        DescrizioneProdotto product = em.find(DescrizioneProdotto.class, id);
+        deleteDescrizioneProdotto(product);
 	}
 
 }

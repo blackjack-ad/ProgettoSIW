@@ -5,8 +5,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 
 @Entity
+@NamedQuery(name="findAllDescrProd", query="SELECT dp FROM DescrizioneProdotto dp")
 public class DescrizioneProdotto {
 
 	@Id
@@ -18,16 +20,22 @@ public class DescrizioneProdotto {
 
 	private Double prezzo;
 
-	@Column(length = 2000,nullable=false)
+	@Column(length = 2000)
 	private String descrizione;
+	
+	public DescrizioneProdotto(){
+		
+	}
 
 	public DescrizioneProdotto(String nome, double prezzo, String descrizione) {
-		super();
 		this.nome = nome;
 		this.prezzo = prezzo;
 		this.descrizione = descrizione;
 	}
-
+	
+	public Long getId() {
+		return id;
+	}
 
 	public String getNome() {
 		return nome;
@@ -48,13 +56,19 @@ public class DescrizioneProdotto {
 		this.descrizione = descrizione;
 	}
 
-	public Long getId() {
-		return id;
+	@Override
+	public boolean equals(Object obj) {
+		DescrizioneProdotto dp = (DescrizioneProdotto)obj;
+		return this.nome.equals(dp.getNome());
+	}
+
+	@Override
+	public int hashCode() {
+		return this.nome.hashCode();
 	}
 
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
 	
 }

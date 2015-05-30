@@ -9,12 +9,12 @@
 </head>
 <body>
 	<f:view>
-		<h1>Products</h1>
+		<h1>Catalogo</h1>
 		<h:form>
 			<table>
 				<tr>
-					<th>Name</th>
-					<th>Price</th>
+					<th>Nome</th>
+					<th>Prezzo</th>
 				</tr>
 				<c:forEach var="descrizioneProdotto"
 					items="#{descrizioneProdottoController.descrizioneProdotti}">

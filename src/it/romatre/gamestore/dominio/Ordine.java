@@ -4,15 +4,29 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+@Entity(name="ordine")
 public class Ordine {
-	
+
 	private Long id;
 	private Date dataInizio;
 	private Date dataChiusura;
 	private Date dataEvasione;
+	
+	//TODO inserire persistenza delle righe
 	private List<RigaDiOrdine> righeDiOrdine;
+	
 	private String stato;
 	
+	@ManyToOne(targetEntity=Utente.class, fetch = FetchType.LAZY)
+	@JoinColumn(name="utenteId")
+	private Utente utente;
+
 	public Ordine() {
 		this.stato = "aperto";
 		this.dataInizio = new Date();
@@ -60,6 +74,22 @@ public class Ordine {
 	@Override
 	public String toString(){
 		return "Ordine in stato " + stato + " contenente " + righeDiOrdine.size() + " righe";
+	}
+	
+	public String getStato() {
+		return stato;
+	}
+
+	public void setStato(String stato) {
+		this.stato = stato;
+	}
+
+	public Utente getUtente() {
+		return utente;
+	}
+
+	public void setUtente(Utente utente) {
+		this.utente = utente;
 	}
 	
 }

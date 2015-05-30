@@ -35,7 +35,9 @@
 		<h:form>
 			<div>
 				Nome:
-				<h:inputText value="#{descrizioneProdottoController.nome}" />
+				<h:inputText value="#{descrizioneProdottoController.nome}"
+					required="false" requiredMessage="Il nome è obbligatorio" id="nome" />
+				<h:message for="nome" />
 			</div>
 			<div>
 				Prezzo:
