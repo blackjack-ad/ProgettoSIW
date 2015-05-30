@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -17,11 +18,10 @@ public class UtenteFacade {
 	@PersistenceContext(unitName = "unit-utente")
 	private EntityManager em;
 
-	public Utente createUtente(String nome, String cognome, String email, String password, String numeroTelefono, String stato, String citta, String cap, String via) {
-		@SuppressWarnings("deprecation")
-//		Date dataNascita = new Date(anno, mese, giorno);
+	public Utente createUtente(String nome, String cognome, String email, String password, String numeroTelefono, 
+								String stato, String citta, String cap, String via, Date dataNascita) {
 		Indirizzo indirizzo = new Indirizzo(stato,citta,cap,via);
-		Utente utente = new Utente(nome, cognome, email, password, numeroTelefono, indirizzo);
+		Utente utente = new Utente(nome, cognome, email, password, numeroTelefono, indirizzo, dataNascita);
 		em.persist(utente);
 		return utente;
 	}

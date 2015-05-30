@@ -51,6 +51,23 @@
 					id="telefono" />
 				<h:message for="telefono" />
 			</div>
+			<h4>Data di nascita:</h4>
+			<div>
+				Giorno
+				<h:inputText value="#{utenteController.giorno}" required="true"
+					requiredMessage=" Campo obbligatorio" id="giorno" />
+				<h:message for="giorno" />
+
+				Mese
+				<h:inputText value="#{utenteController.mese}" required="true"
+					requiredMessage=" Campo obbligatorio" id="mese" />
+				<h:message for="mese" />
+
+				Anno
+				<h:inputText value="#{utenteController.anno}" required="true"
+					requiredMessage=" Campo obbligatorio" id="anno" />
+				<h:message for="anno" />
+			</div>
 			<h4>Indirizzo di residenza</h4>
 			<div>
 				Stato:

@@ -1,5 +1,8 @@
 package it.romatre.gamestore.controller;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import it.romatre.gamestore.dominio.Utente;
@@ -31,7 +34,10 @@ public class UtenteController {
 
 	
 	public String createUtente() {
-		this.utente = utenteFacade.createUtente(nome, cognome, email, password, numeroTelefono, stato, citta, cap, via);
+		Calendar c1 = GregorianCalendar.getInstance();
+		c1.set(anno, mese-1, giorno);
+		Date dataNascita = c1.getTime();
+		this.utente = utenteFacade.createUtente(nome, cognome, email, password, numeroTelefono, stato, citta, cap, via,dataNascita);
 		return "utente"; 
 	}
 

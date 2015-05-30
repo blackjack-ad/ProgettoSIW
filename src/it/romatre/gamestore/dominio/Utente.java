@@ -1,5 +1,6 @@
 package it.romatre.gamestore.dominio;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +34,11 @@ public class Utente {
 	private String email;
 	@Column(nullable = false)
 	private String password;
+	
+	@Column(name = "DATE_FIELD") 
+	@Temporal(TemporalType.DATE) 
+	private Date dataNascita;
+	
 	@OneToOne (cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
 	private Indirizzo indirizzo;
 
@@ -41,13 +47,14 @@ public class Utente {
 	@OneToMany (targetEntity=Ordine.class, fetch = FetchType.LAZY, mappedBy="utente")	//da verificare ed aggiornare la classe Ordine
 	private Map<Long, Ordine> ordini;
 
-	public Utente(String nome, String cognome, String email, String password, String telefono, Indirizzo indirizzo) {
+	public Utente(String nome, String cognome, String email, String password, String telefono, Indirizzo indirizzo,Date dataNascita ) {
 		super();
 		this.nome = nome;
 		this.cognome = cognome;
 		this.telefono = telefono;
 		this.email = email;
 		this.password = password;
+		this.dataNascita = dataNascita;
 		this.indirizzo = indirizzo;
 		this.ordini = new HashMap<Long, Ordine>();
 	}
@@ -114,6 +121,14 @@ public class Utente {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String printDataNascita(){
+		return this.dataNascita.toString();
+	}
+	
+	public String printIndirizzo(){
+		return this.indirizzo.getStato() + " " + this.indirizzo.getCitta() + " " + this.indirizzo.getCitta();
 	}
 
 }
