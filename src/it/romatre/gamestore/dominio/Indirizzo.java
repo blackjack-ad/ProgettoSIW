@@ -17,6 +17,10 @@ public class Indirizzo {
 	private String cap;
 	private String via;
 	
+	public Indirizzo(){
+		
+	}
+	
 	public Indirizzo(String stato, String citta, String cap, String via) {
 		super();
 		this.stato = stato;

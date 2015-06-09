@@ -19,7 +19,6 @@ public class DescrizioneProdottoFacade {
 
 	public DescrizioneProdotto createDescrizioneProdotto(String nome,
 			Double prezzo, String descrizione) {
-		//successivamente persistenza
 		dp = new DescrizioneProdotto(nome,prezzo,descrizione);
 		em.persist(dp);
 		return dp;

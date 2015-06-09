@@ -37,6 +37,7 @@
 	<div>
 		<p>
 			<a href="homepage.jsp"> Homepage</a>
+		</p>
 	</div>
 
 </body>

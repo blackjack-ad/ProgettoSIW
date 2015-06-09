@@ -11,6 +11,9 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
+<!-- Bootstrap core CSS -->
+<link href="ubuntu/bootstrap.min.css" rel="stylesheet">
+
 <title>Nuovo Utente</title>
 </head>
 <body>

@@ -1,9 +1,12 @@
 package it.romatre.gamestore.controller;
 
 
+import java.io.File;
+import java.sql.Blob;
 import java.util.List;
 
-import it.romatre.gamestore.dominio.Azienda;
+
+//import it.romatre.gamestore.dominio.Azienda;
 import it.romatre.gamestore.dominio.DescrizioneProdotto;
 import it.romatre.gamestore.facade.DescrizioneProdottoFacade;
 
@@ -16,10 +19,11 @@ public class DescrizioneProdottoController {
 
 	@ManagedProperty(value="#{param.id}")
 	private Long id; 
-	private Azienda azienda; 
+//	private Azienda azienda; 
 	private String nome;
 	private Double prezzo;
 	private String descrizione;
+
 	private DescrizioneProdotto descrizioneProdotto;
 	private List<DescrizioneProdotto> descrizioneProdotti;
 	

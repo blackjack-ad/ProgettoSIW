@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
+<%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -12,10 +15,10 @@
 <title>Pagina dell'amministratore</title>
 
 <!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="ubuntu/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="cover.css" rel="stylesheet">
+
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -28,13 +31,53 @@
 </head>
 </head>
 <body>
-	<button type="button" class="btn btn-success"
+
+
+
+	<nav class="navbar navbar-default navbar-static-top">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed"
+				data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span> <span
+					class="icon-bar"></span> <span class="icon-bar"></span> <span
+					class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="faces/index.jsp">GameStore</a>
+		</div>
+
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+
+				<li><a href="#">Accedi come utente</a></li>
+
+				<li><a href="adminPage.jsp">Accedi come amministratore</a></li>
+
+				<li><a href="faces/registrazioneUtente.jsp">Registrati</a></li>
+			</ul>
+			<form class="navbar-form navbar-center" role="search">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Cerca">
+				</div>
+				<button type="submit" class="btn btn-default">Vai</button>
+			</form>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container-fluid --> </nav>
+
+
+
+	<button type="button" class="btn btn-primary"
 		onclick="location.href='faces/nuovaDescrizioneProdotto.jsp'">Inserisci
 		prodotto nel catalogo</button>
 
-	<button type="button" class="btn btn-success">Inserisci
+	<button type="button" class="btn btn-primary">Inserisci
 		prodotto nel magazzino</button>
 
-	<button type="button" class="btn btn-success">Evadi Ordine</button>
+	<button type="button" class="btn btn-primary">Evadi Ordine</button>
 </body>
 </html>
