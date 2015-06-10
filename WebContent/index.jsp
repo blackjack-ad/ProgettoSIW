@@ -63,6 +63,7 @@
 												amministratore</a></li>
 
 										<li><a href="faces/registrazioneUtente.jsp">Registrati</a></li>
+										<li><a href="faces/login.jsp">Login</a></li>
 									</ul>
 									<form class="navbar-form navbar-center" role="search">
 										<div class="form-group">
