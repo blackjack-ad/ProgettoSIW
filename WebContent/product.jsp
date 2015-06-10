@@ -38,9 +38,9 @@
 <body>
 	<f:view>
 		<h1>${descrizioneProdottoController.descrizioneProdotto.nome}</h1>
-		<h2>Details</h2>
-		<div>Price: ${descrizioneProdottoController.descrizioneProdotto.prezzo}</div>
-		<div>Description: ${descrizioneProdottoController.descrizioneProdotto.descrizione}</div>
+		<h2>Dettagli Prodotto</h2>
+		<div>Prezzo: ${descrizioneProdottoController.descrizioneProdotto.prezzo}</div>
+		<div>Descrizione: ${descrizioneProdottoController.descrizioneProdotto.descrizione}</div>
 
 	</f:view>
 </body>
