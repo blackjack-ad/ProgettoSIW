@@ -34,10 +34,8 @@ public class UtenteController {
 
 	
 	public String createUtente() {
-		Calendar c1 = GregorianCalendar.getInstance();
-		c1.set(anno, mese-1, giorno);
-		Date dataNascita = c1.getTime();
-		this.utente = utenteFacade.createUtente(nome, cognome, email, password, numeroTelefono, stato, citta, cap, via,dataNascita);
+		String data = giorno + "/" + mese + "/"+ anno;
+		this.utente = utenteFacade.createUtente(nome, cognome, email, password, numeroTelefono, stato, citta, cap, via,data);
 		return "utente"; 
 	}
 

@@ -34,10 +34,8 @@ public class Utente {
 	private String email;
 	@Column(nullable = false)
 	private String password;
-	
-	@Column(name = "DATE_FIELD") 
-	@Temporal(TemporalType.DATE) 
-	private Date dataNascita;
+
+	private String dataNascita;
 	
 	@OneToOne (cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
 	private Indirizzo indirizzo;
@@ -47,7 +45,7 @@ public class Utente {
 	@OneToMany (targetEntity=Ordine.class, fetch = FetchType.LAZY, mappedBy="utente")	//da verificare ed aggiornare la classe Ordine
 	private Map<Long, Ordine> ordini;
 
-	public Utente(String nome, String cognome, String email, String password, String telefono, Indirizzo indirizzo,Date dataNascita ) {
+	public Utente(String nome, String cognome, String email, String password, String telefono, Indirizzo indirizzo,String dataNascita ) {
 		super();
 		this.nome = nome;
 		this.cognome = cognome;
