@@ -129,4 +129,14 @@ public class Utente {
 		return this.indirizzo.getStato() + " " + this.indirizzo.getCitta() + " " + this.indirizzo.getCitta();
 	}
 
+	public String getDataNascita() {
+		return dataNascita;
+	}
+
+	public void setDataNascita(String dataNascita) {
+		this.dataNascita = dataNascita;
+	}
+	
+	
+
 }

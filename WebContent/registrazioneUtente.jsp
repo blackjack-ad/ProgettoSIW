@@ -42,7 +42,7 @@
 			</div>
 			<div>
 				Crea la password:
-				<h:inputText value="#{utenteController.password}" required="true"
+				<h:inputSecret value="#{utenteController.password}" required="true"
 					requiredMessage=" La password e' obbligatoria" id="password" />
 				<h:message for="password" />
 			</div>
