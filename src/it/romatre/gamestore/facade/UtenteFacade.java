@@ -6,6 +6,7 @@ import it.romatre.gamestore.dominio.Utente;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
 
 import java.util.Calendar;
@@ -27,7 +28,8 @@ public class UtenteFacade {
 	}
 
 	public Utente getUtente(String email) {
-		Utente utente = em.find(Utente.class, email);
+		Query q = em.createQuery("SELECT u FROM utente u WHERE u.email='" + email +"'");
+		Utente utente = (Utente) q.getSingleResult();
 		return utente;
 	}
 

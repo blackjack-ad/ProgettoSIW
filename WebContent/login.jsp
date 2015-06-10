@@ -23,14 +23,14 @@
 			<h3>Effettua il login:</h3>
 			<div>
 				Email:
-				<h:inputText value="#{utenteController.email}" required="true"
+				<h:inputText value="#{loginController.email}" required="true"
 					requiredMessage=" Devi inserire la tua emial per effettuare il login"
 					id="email" />
 				<h:message for="email" />
 			</div>
 			<div>
 				Password:
-				<h:inputSecret value="#{utenteController.password}" required="true"
+				<h:inputSecret value="#{loginController.password}" required="true"
 					requiredMessage=" Devi inserire la tua password" id="password" />
 				<h:message for="password" />
 			</div>

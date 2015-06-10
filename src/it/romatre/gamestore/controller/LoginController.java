@@ -16,7 +16,7 @@ public class LoginController {
 
 	public String verifyPasswordUtente(){
 		Utente current = utenteFacade.getUtente(email);
-		if(current.getPassword().equals(password)){
+		if(current!= null && current.getPassword().equals(password)){
 			FacesContext context = FacesContext.getCurrentInstance();
 			context.getExternalContext().getSessionMap().put("user", current);
 			return "index";
