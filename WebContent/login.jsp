@@ -46,11 +46,7 @@
 				Non sei ancora registrato? <a href="registrazioneUtente.jsp">
 					registrati</a> subito:
 			</h4>
-
-
 		</div>
-
 	</f:view>
-
 </body>
 </html>

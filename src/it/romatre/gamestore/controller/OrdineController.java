@@ -10,23 +10,31 @@ import java.util.List;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
+import javax.faces.context.FacesContext;
 
 @ManagedBean
 public class OrdineController {
-	
+
 	@EJB
 	private OrdineFacade ordineFacade;
-	
+
 	private Date dataInizio;
 	private Date dataFine;
 	private Date dataEvasione;
 	private Utente utente;
 	private Ordine ordine;
 	private List<Ordine> ordini;
-	
+
 	public String creaOrdine() {
-		this.ordine = ordineFacade.createOrdine();
-		return "ordine";
+		FacesContext fc = FacesContext.getCurrentInstance();
+		Utente utenteCorrente = (Utente)fc.getExternalContext().getSessionMap().get("user");
+		if(utenteCorrente!=null){
+			this.ordine = ordineFacade.createOrdine(utenteCorrente);
+			return "ordine";
+		}
+		else
+			return "errorPage";
+
 	}
 
 	public String listOrdini() {
@@ -89,18 +97,18 @@ public class OrdineController {
 	public void setOrdini(List<Ordine> ordini) {
 		this.ordini = ordini;
 	}
-	
-//	public String findOrdine() {
-//		this.ordine = ordineFacade.getOrdine(id);
-//		return "ordine";
-//	}
 
-//
-//	public String findOrdine(Long id) {
-//		this.odine = utenteFacade.getUtente(id);
-//		return "ordine";
-//	}
-	
+	//	public String findOrdine() {
+	//		this.ordine = ordineFacade.getOrdine(id);
+	//		return "ordine";
+	//	}
+
+	//
+	//	public String findOrdine(Long id) {
+	//		this.odine = utenteFacade.getUtente(id);
+	//		return "ordine";
+	//	}
+
 	//Stringa di prova
-	
+
 }

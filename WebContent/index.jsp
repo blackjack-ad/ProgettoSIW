@@ -69,8 +69,11 @@
 										<div class="form-group">
 											<input type="text" class="form-control" placeholder="Cerca">
 										</div>
-										<button type="submit" class="btn btn-default">Vai</button>
+										<button type="submit" class="btn btn-default"">Vai</button>
 									</form>
+									<h:form>
+										<h:commandButton action="#{ordineController.creaOrdine}">Crea Ordine </h:commandButton>
+									</h:form>
 								</div>
 								<!-- /.navbar-collapse -->
 							</div>

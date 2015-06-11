@@ -1,6 +1,7 @@
 package it.romatre.gamestore.facade;
 
 import it.romatre.gamestore.dominio.Ordine;
+import it.romatre.gamestore.dominio.Utente;
 
 import java.util.List;
 
@@ -17,8 +18,10 @@ public class OrdineFacade {
 		@PersistenceContext(unitName = "unit-ordine")
 		private EntityManager em;
 		
-		public Ordine createOrdine(){
+		public Ordine createOrdine(Utente u){
 			Ordine ordine = new Ordine();
+			ordine.setUtente(u);
+			em.persist(ordine);
 			return ordine;
 		}
 		

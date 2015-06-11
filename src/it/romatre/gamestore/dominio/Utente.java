@@ -1,8 +1,10 @@
 package it.romatre.gamestore.dominio;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.CascadeType;
@@ -12,6 +14,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
@@ -42,8 +45,8 @@ public class Utente {
 
 	private Ordine ordineCorrente;
 
-	@OneToMany (targetEntity=Ordine.class, fetch = FetchType.LAZY, mappedBy="utente")	//da verificare ed aggiornare la classe Ordine
-	private Map<Long, Ordine> ordini;
+	@OneToMany(mappedBy="utente")
+	private List<Ordine> ordini;
 
 	public Utente(String nome, String cognome, String email, String password, String telefono, Indirizzo indirizzo,String dataNascita ) {
 		super();
@@ -54,7 +57,7 @@ public class Utente {
 		this.password = password;
 		this.dataNascita = dataNascita;
 		this.indirizzo = indirizzo;
-		this.ordini = new HashMap<Long, Ordine>();
+		this.ordini = new ArrayList<Ordine>();
 	}
 
 	public String getNome() {
@@ -105,11 +108,11 @@ public class Utente {
 		this.ordineCorrente = ordineCorrente;
 	}
 
-	public Map<Long, Ordine> getOrdini() {
+	public List<Ordine> getOrdini() {
 		return ordini;
 	}
 
-	public void setOrdini(Map<Long, Ordine> ordini) {
+	public void setOrdini(List<Ordine> ordini) {
 		this.ordini = ordini;
 	}
 
@@ -137,6 +140,4 @@ public class Utente {
 		this.dataNascita = dataNascita;
 	}
 	
-	
-
 }

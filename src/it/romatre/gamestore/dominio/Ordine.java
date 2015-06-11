@@ -3,7 +3,6 @@ package it.romatre.gamestore.dominio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,8 +32,7 @@ public class Ordine {
 	
 	private String stato;
 	
-	@ManyToOne(targetEntity=Utente.class, fetch = FetchType.LAZY)
-	@JoinColumn(name="utenteId")
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Utente utente;
 
 	public Ordine() {
@@ -100,6 +98,14 @@ public class Ordine {
 
 	public void setUtente(Utente utente) {
 		this.utente = utente;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 }

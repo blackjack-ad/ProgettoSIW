@@ -10,7 +10,6 @@ import javax.faces.context.FacesContext;
 public class LoginController {
 	@EJB
 	private UtenteFacade utenteFacade; 
-	
 	private String email;
 	private String password;
 
