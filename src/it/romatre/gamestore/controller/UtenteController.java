@@ -35,7 +35,7 @@ public class UtenteController {
 	
 	public String createUtente() {
 		String data = giorno + "/" + mese + "/"+ anno;
-		this.utente = utenteFacade.createUtente(nome, cognome, email, password, numeroTelefono, stato, citta, cap, via,data);
+		this.utente = utenteFacade.createUtente(nome, cognome, email, password, numeroTelefono, stato, citta, cap, via, data);
 		return "utente"; 
 	}
 
