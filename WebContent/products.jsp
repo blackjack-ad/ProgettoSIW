@@ -38,6 +38,7 @@
 </head>
 <body>
 	<f:view>
+	<%@ include file="standard-header.jsp"%>
 		<h1>Catalogo</h1>
 		<h:form>
 			<table>

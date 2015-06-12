@@ -16,6 +16,7 @@
 <title>Conferma registrazione</title>
 </head>
 <body>
+	<f:view><%@ include file="standard-header.jsp"%></f:view>
 
 	<h2>Registrazione avvenuta con successo</h2>
 	<h3>Dati registrazione:</h3>
@@ -29,17 +30,21 @@
 		<strong>Email: </strong> ${utenteController.utente.email}
 	</div>
 	<div>
-		<strong>Data di nascita: </strong> ${utenteController.utente.dataNascita}
+		<strong>Data di nascita: </strong>
+		${utenteController.utente.dataNascita}
 	</div>
 
 	<div>
-		<strong>Indirizzo: </strong> ${utenteController.utente.indirizzo.via}, 
-		 ${utenteController.utente.indirizzo.citta} (${utenteController.utente.indirizzo.cap})
+		<strong>Indirizzo: </strong> ${utenteController.utente.indirizzo.via},
+		${utenteController.utente.indirizzo.citta}
+		(${utenteController.utente.indirizzo.cap})
 	</div>
 	<div>
 		<p>
 		<p>
-			<h4>Trona alla <a href="index.jsp"> homepage</a> </h4>
+		<h4>
+			Trona alla <a href="index.jsp"> homepage</a>
+		</h4>
 	</div>
 
 </body>

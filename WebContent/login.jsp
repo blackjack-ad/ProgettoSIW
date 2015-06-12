@@ -18,7 +18,10 @@
 </head>
 <body>
 
+
+
 	<f:view>
+		<%@ include file="standard-header.jsp"%>
 		<h:form>
 			<h3>Effettua il login:</h3>
 			<div>
@@ -28,6 +31,7 @@
 					id="email" />
 				<h:message for="email" />
 			</div>
+			<p>
 			<div>
 				Password:
 				<h:inputSecret value="#{loginController.password}" required="true"
@@ -39,14 +43,17 @@
 					action="#{loginController.verifyPasswordUtente}" />
 			</div>
 		</h:form>
-		<p>
-		<p>
-		<div>
-			<h4>
-				Non sei ancora registrato? <a href="registrazioneUtente.jsp">
-					registrati</a> subito:
-			</h4>
-		</div>
 	</f:view>
+
+	<p>
+	<p>
+	<div>
+		<h4>
+			Non sei ancora registrato? <a href="registrazioneUtente.jsp">
+				registrati</a> subito!
+		</h4>
+	</div>
+
+
 </body>
 </html>

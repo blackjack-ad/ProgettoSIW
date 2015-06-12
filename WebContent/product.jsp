@@ -37,6 +37,7 @@
 </head>
 <body>
 	<f:view>
+	<%@ include file="standard-header.jsp"%>
 		<h1>${descrizioneProdottoController.descrizioneProdotto.nome}</h1>
 		<h2>Dettagli Prodotto</h2>
 		<div>Prezzo: ${descrizioneProdottoController.descrizioneProdotto.prezzo}</div>

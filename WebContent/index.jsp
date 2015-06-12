@@ -18,27 +18,20 @@
 <!-- Bootstrap core CSS -->
 <link href="ubuntu/bootstrap.min.css" rel="stylesheet">
 
-<!-- Custom styles for this template -->
-
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
 	<f:view>
-		<div class="site-wrapper">
+		
+	<div class="site-wrapper">
 
-			<div class="site-wrapper-inner">
+		<div class="site-wrapper-inner">
 
-				<div class="cover-container">
+			<div class="cover-container">
 
-					<div class="masthead clearfix">
-						<div class="inner">
-							<nav class="navbar navbar-default navbar-static-top">
+				<div class="masthead clearfix">
+					<div class="inner">
+						<nav class="navbar navbar-default navbar-static-top">
 							<div class="container-fluid">
 								<!-- Brand and toggle get grouped for better mobile display -->
 								<div class="navbar-header">
@@ -57,9 +50,8 @@
 									id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav">
 
-										<li><a href="#">Accedi come utente</a></li>
 
-										<li><a href="adminPage.jsp">Accedi come
+										<li><a href="faces/adminPage.jsp">Accedi come
 												amministratore</a></li>
 
 										<li><a href="faces/registrazioneUtente.jsp">Registrati</a></li>
@@ -71,87 +63,98 @@
 										</div>
 										<button type="submit" class="btn btn-default"">Vai</button>
 									</form>
-									<h:form>
-										<h:commandButton action="#{ordineController.creaOrdine}">Crea Ordine </h:commandButton>
-									</h:form>
+
 								</div>
 								<!-- /.navbar-collapse -->
 							</div>
-							<!-- /.container-fluid --> </nav>
-
-
-						</div>
+							<!-- /.container-fluid -->
+						</nav>
 					</div>
-
-					<div class="center jumbotron" padding='15px' align="center">
-						<h1>Perché non acquisti un gioco di qualità top?</h1>
-						<p>Il nostro catalogo contiene tutto ciò che un giocatore
-							potrebbe mai desiderare: videogiochi, console, accessori, guide e
-							molto altro ancora</p>
-
-						<p>
-							<h:form>
-								<h:commandButton styleClass="btn btn-primary"
-									action="#{descrizioneProdottoController.listDescrizioneProdotti}"
-									value="Consulta il nostro catalogo">
-								</h:commandButton>
-							</h:form>
-						</p>
-
-
-					</div>
-
-					<div id="myCarousel" class="carousel slide" data-ride="carousel"
-						align="center">
-						<!-- Indicators -->
-						<ol class="carousel-indicators">
-							<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-							<li data-target="#myCarousel" data-slide-to="1"></li>
-							<li data-target="#myCarousel" data-slide-to="2"></li>
-						</ol>
-
-						<!-- Wrapper for slides -->
-
-						<div class="carousel-inner" role="listbox">
-
-							<div class="item active">
-								<img src="tab0.jpg" alt="Flower">
-							</div>
-
-							<div class="item">
-								<img src="tab1.jpg" alt="Chania">
-							</div>
-
-							<div class="item">
-								<img src="tab2.jpg" alt="Chania">
-							</div>
-
-						</div>
-
-						<!-- Left and right controls -->
-						<a class="left carousel-control" href="#myCarousel" role="button"
-							data-slide="prev"> <span
-							class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-							<span class="sr-only">Previous</span>
-						</a> <a class="right carousel-control" href="#myCarousel"
-							role="button" data-slide="next"> <span
-							class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-							<span class="sr-only">Next</span>
-						</a>
-					</div>
-
-
-
-					<!-- Bootstrap core JavaScript
-    ================================================== -->
-					<!-- Placed at the end of the document so the pages load faster -->
-					<script
-						src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-					<script src="js/bootstrap.min.js"></script>
-					<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-					<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 				</div>
+
+
+		<h:form>
+			<h:commandButton action="#{ordineController.creaOrdine}">Crea Ordine </h:commandButton>
+		</h:form>
+		</div>
+		<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container-fluid -->
+		</nav>
+
+
+		</div>
+		</div>
+
+		<div class="center jumbotron" padding='15px' align="center">
+			<h1>Perché non acquisti un gioco di qualità top?</h1>
+			<p>Il nostro catalogo contiene tutto ciò che un giocatore
+				potrebbe mai desiderare: videogiochi, console, accessori, guide e
+				molto altro ancora</p>
+
+			<p>
+				<h:form>
+					<h:commandButton styleClass="btn btn-primary"
+						action="#{descrizioneProdottoController.listDescrizioneProdotti}"
+						value="Consulta il nostro catalogo">
+					</h:commandButton>
+				</h:form>
+			</p>
+
+
+		</div>
+
+		<div id="myCarousel" class="carousel slide" data-ride="carousel"
+			align="center">
+			<!-- Indicators -->
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+				<li data-target="#myCarousel" data-slide-to="2"></li>
+			</ol>
+
+			<!-- Wrapper for slides -->
+
+			<div class="carousel-inner" role="listbox">
+
+				<div class="item active">
+					<img src="tab0.jpg" alt="Flower">
+				</div>
+
+				<div class="item">
+					<img src="tab1.jpg" alt="Chania">
+				</div>
+
+				<div class="item">
+					<img src="tab2.jpg" alt="Chania">
+				</div>
+
 			</div>
+
+			<!-- Left and right controls -->
+			<a class="left carousel-control" href="#myCarousel" role="button"
+				data-slide="prev"> <span
+				class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+				<span class="sr-only">Previous</span>
+			</a> <a class="right carousel-control" href="#myCarousel" role="button"
+				data-slide="next"> <span
+				class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+				<span class="sr-only">Next</span>
+			</a>
+		</div>
+
+
+
+		<!-- Bootstrap core JavaScript
+    ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script
+			src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+		<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+		</div>
+		</div>
 		</div>
 	</f:view>
 </body>
