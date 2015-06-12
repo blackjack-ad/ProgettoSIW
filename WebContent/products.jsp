@@ -38,7 +38,7 @@
 </head>
 <body>
 	<f:view>
-	<%@ include file="standard-header.jsp"%>
+		<%@ include file="standard-header.jsp"%>
 		<h1>Catalogo</h1>
 		<h:form>
 			<table>
@@ -55,6 +55,12 @@
 								<f:param name="id" value="#{descrizioneProdotto.id}" />
 							</h:commandLink></td>
 						<td>${descrizioneProdotto.prezzo}</td>
+						<td><c:if test="${loginController.loggedIn}">
+								<input type="number" min="0" max="99" id="input"
+									placeholder="quantita">
+								<h:commandButton value="compra">
+								</h:commandButton>
+							</c:if></td>
 					</tr>
 				</c:forEach>
 			</table>

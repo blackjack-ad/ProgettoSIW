@@ -72,10 +72,6 @@
 					</div>
 				</div>
 
-
-		<h:form>
-			<h:commandButton action="#{ordineController.creaOrdine}">Crea Ordine </h:commandButton>
-		</h:form>
 		</div>
 		<!-- /.navbar-collapse -->
 		</div>

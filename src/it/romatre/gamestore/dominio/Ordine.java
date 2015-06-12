@@ -3,6 +3,8 @@ package it.romatre.gamestore.dominio;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -27,7 +29,7 @@ public class Ordine {
 	@Column(nullable = true)
 	private Date dataEvasione;
 	
-	//TODO inserire persistenza delle righe
+	@OneToMany(mappedBy="ordine", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
 	private List<RigaDiOrdine> righeDiOrdine;
 	
 	private String stato;

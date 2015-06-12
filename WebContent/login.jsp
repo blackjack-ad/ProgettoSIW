@@ -18,8 +18,6 @@
 </head>
 <body>
 
-
-
 	<f:view>
 		<%@ include file="standard-header.jsp"%>
 		<h:form>
