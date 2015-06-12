@@ -20,7 +20,7 @@ public class UtenteFacade {
 	private EntityManager em;
 
 	public Utente createUtente(String nome, String cognome, String email, String password, String numeroTelefono, 
-								String stato, String citta, String cap, String via, String dataNascita) {
+			String stato, String citta, String cap, String via, String dataNascita) {
 		Indirizzo indirizzo = new Indirizzo(stato,citta,cap,via);
 		Utente utente = new Utente(nome, cognome, email, password, numeroTelefono, indirizzo, dataNascita);
 		em.persist(utente);
@@ -28,9 +28,13 @@ public class UtenteFacade {
 	}
 
 	public Utente getUtente(String email) {
+		List<Utente> utenti;
 		Query q = em.createQuery("SELECT u FROM utente u WHERE u.email='" + email +"'");
-		Utente utente = (Utente) q.getSingleResult();
-		return utente;
+		utenti = q.getResultList();
+		if (utenti.isEmpty()) 
+			return null;
+		else return utenti.get(0);
+
 	}
 
 	public List<Utente> getAllUtenti() {

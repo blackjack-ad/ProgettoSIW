@@ -17,9 +17,11 @@ public class LoginController {
 	private String password;
 	private boolean loggedIn = false; 
 	private Utente utenteCorrente;
-	
+
 	public String verifyPasswordUtente(){
 		Utente current = utenteFacade.getUtente(email);
+		if (current == null)
+			return "errorLogin";
 		if(current!= null && current.getPassword().equals(password)){
 			FacesContext context = FacesContext.getCurrentInstance();
 			context.getExternalContext().getSessionMap().put("user", current);
@@ -62,7 +64,7 @@ public class LoginController {
 	public void setUtenteCorrente(Utente utenteCorrente) {
 		this.utenteCorrente = utenteCorrente;
 	}
-	
-	
-	
+
+
+
 }
