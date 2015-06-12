@@ -22,16 +22,16 @@
 
 <body>
 	<f:view>
-		
-	<div class="site-wrapper">
 
-		<div class="site-wrapper-inner">
+		<div class="site-wrapper">
 
-			<div class="cover-container">
+			<div class="site-wrapper-inner">
 
-				<div class="masthead clearfix">
-					<div class="inner">
-						<nav class="navbar navbar-default navbar-static-top">
+				<div class="cover-container">
+
+					<div class="masthead clearfix">
+						<div class="inner">
+							<nav class="navbar navbar-default navbar-static-top">
 							<div class="container-fluid">
 								<!-- Brand and toggle get grouped for better mobile display -->
 								<div class="navbar-header">
@@ -55,7 +55,12 @@
 												amministratore</a></li>
 
 										<li><a href="faces/registrazioneUtente.jsp">Registrati</a></li>
-										<li><a href="faces/login.jsp">Login</a></li>
+										<c:if test="${not loginController.loggedIn}">
+											<li><a href="faces/login.jsp">Login</a></li>
+										</c:if>
+										<c:if test="${loginController.loggedIn}">
+											<li><a href="faces/logout.jsp">Logout</a></li>
+										</c:if>
 									</ul>
 									<form class="navbar-form navbar-center" role="search">
 										<div class="form-group">
@@ -67,16 +72,15 @@
 								</div>
 								<!-- /.navbar-collapse -->
 							</div>
-							<!-- /.container-fluid -->
-						</nav>
+							<!-- /.container-fluid --> </nav>
+						</div>
 					</div>
-				</div>
 
-		</div>
-		<!-- /.navbar-collapse -->
-		</div>
-		<!-- /.container-fluid -->
-		</nav>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+			</nav>
 
 
 		</div>

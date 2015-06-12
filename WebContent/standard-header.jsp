@@ -27,14 +27,13 @@
 								<ul class="nav navbar-nav">
 									<li><a href="adminPage.jsp">Accedi come amministratore</a></li>
 									<li><a href="registrazioneUtente.jsp">Registrati</a></li>
-									<li><a href="login.jsp">Login</a></li>
+									<c:if test="${not loginController.loggedIn}">
+										<li><a href="login.jsp">Login</a></li>
+									</c:if>
+									<c:if test="${loginController.loggedIn}">
+										<li><a href="logout.jsp">Logout</a></li>
+									</c:if>
 								</ul>
-								<form class="navbar-form navbar-center" role="search">
-									<div class="form-group">
-										<input type="text" class="form-control" placeholder="Cerca">
-									</div>
-									<button type="submit" class="btn btn-default">Vai</button>
-								</form>
 							</div>
 							<!-- /.navbar-collapse -->
 						</div>

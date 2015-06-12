@@ -36,6 +36,7 @@
 					requiredMessage=" Devi inserire la tua password" id="password" />
 				<h:message for="password" />
 			</div>
+			<p>
 			<div>
 				<h:commandButton value="Accedi"
 					action="#{loginController.verifyPasswordUtente}" />

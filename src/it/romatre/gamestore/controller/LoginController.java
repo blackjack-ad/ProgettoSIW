@@ -30,6 +30,12 @@ public class LoginController {
 		else
 			return "errorLogin";
 	}
+	
+	public String logout() {
+		setLoggedIn(false);
+		setUtenteCorrente(null);
+		return "index";
+	}
 
 	public String getEmail() {
 		return email;
@@ -47,7 +53,7 @@ public class LoginController {
 		this.password = password;
 	}
 
-	public boolean isLoggedIn() {
+	public boolean getLoggedIn() {
 		return loggedIn;
 	}
 
