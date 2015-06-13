@@ -9,7 +9,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-@ManagedBean
+@ManagedBean(name="loginController")
 @SessionScoped
 public class LoginController {
 	@EJB
@@ -17,6 +17,7 @@ public class LoginController {
 	private String email;
 	private String password;
 	private boolean loggedIn = false; 
+	private boolean creatingOrder = false; 
 	private Utente utenteCorrente;
 
 	public String verifyPasswordUtente(){
@@ -72,6 +73,14 @@ public class LoginController {
 
 	public void setUtenteCorrente(Utente utenteCorrente) {
 		this.utenteCorrente = utenteCorrente;
+	}
+
+	public boolean isCreatingOrder() {
+		return creatingOrder;
+	}
+
+	public void setCreatingOrder(boolean creatingOrder) {
+		this.creatingOrder = creatingOrder;
 	}
 
 

@@ -40,31 +40,42 @@
 	<f:view>
 		<%@ include file="standard-header.jsp"%>
 		<h1>Catalogo</h1>
-		<h:form>
-			<table>
+		<table>
+			<tr>
+				<th>Nome</th>
+				<th>Prezzo</th>
+			</tr>
+			<c:forEach var="descrizioneProdotto"
+				items="#{descrizioneProdottoController2.descrizioneProdotti}">
 				<tr>
-					<th>Nome</th>
-					<th>Prezzo</th>
-				</tr>
-				<c:forEach var="descrizioneProdotto"
-					items="#{descrizioneProdottoController.descrizioneProdotti}">
-					<tr>
-						<td><h:commandLink
-								action="#{descrizioneProdottoController.findDescrizioneProdotto}"
+					<td><h:form>
+							<h:commandLink
+								action="#{descrizioneProdottoController2.findDescrizioneProdotto}"
 								value="#{descrizioneProdotto.nome}">
 								<f:param name="id" value="#{descrizioneProdotto.id}" />
-							</h:commandLink></td>
-						<td>${descrizioneProdotto.prezzo}</td>
-						<td><c:if test="${loginController.loggedIn}">
-								<input type="number" min="0" max="99" id="input"
-									placeholder="quantita">
-								<h:commandButton value="compra">
+							</h:commandLink>
+						</h:form></td>
+					<td>${descrizioneProdotto.prezzo}</td>
+					<c:if test="${loginController.loggedIn}">
+						<td><h:form>
+								<h:inputText value="#{descrizioneProdottoController2.quantita}"></h:inputText>
+								<h:commandButton
+									action="#{descrizioneProdottoController2.creaRigaDiOrdine}"
+									value="Acquista">
+									<f:param name="id" value="#{descrizioneProdotto.id}" />
 								</h:commandButton>
-							</c:if></td>
-					</tr>
-				</c:forEach>
-			</table>
-		</h:form>
+							</h:form></td>
+					</c:if>
+				</tr>
+			</c:forEach>
+		</table>
+		<c:if test="${loginController.creatingOrder}">
+			<h:form>
+				<h:commandButton action="#{ordineController.persistiOrdine}"
+					value="Conferma Ordine">
+				</h:commandButton>
+			</h:form>
+		</c:if>
 	</f:view>
 </body>
 </html>

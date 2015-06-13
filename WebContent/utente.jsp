@@ -43,7 +43,7 @@
 		<p>
 		<p>
 		<h4>
-			Trona alla <a href="index.jsp"> homepage</a>
+			Torna alla <a href="index.jsp"> homepage</a>
 		</h4>
 	</div>
 

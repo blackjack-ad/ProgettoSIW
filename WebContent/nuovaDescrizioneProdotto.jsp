@@ -43,15 +43,15 @@
 		 	<h1>Inserisci i dati del prodotto da inserire nel catalogo</h1>
 			<div>
 				Nome:
-				<h:inputText value="#{descrizioneProdottoController.nome}" />
+				<h:inputText value="#{descrizioneProdottoController2.nome}" />
 			</div>
 			<div>
 				Prezzo:
-				<h:inputText value="#{descrizioneProdottoController.prezzo}" />
+				<h:inputText value="#{descrizioneProdottoController2.prezzo}" />
 			</div>
 			<div>
 				Descrizione:
-				<h:inputText value="#{descrizioneProdottoController.descrizione}" />
+				<h:inputText value="#{descrizioneProdottoController2.descrizione}" />
 			</div>
 
 			<div>
@@ -65,13 +65,12 @@
 
 							reader.onload = function(e) {
 								$('#blah').attr('src', e.target.result);
+								
 							}
-
 							reader.readAsDataURL(input.files[0]);
 					
 						}
 					}
-
 					$('#imgInp').change(function() {
 						readURL(this);
 					});
@@ -79,10 +78,10 @@
 			</div>
 			<div>
 				<h:commandButton value="Inserisci"
-					action="#{descrizioneProdottoController.createDescrizioneProdotto}" />
+					action="#{descrizioneProdottoController2.createDescrizioneProdotto}" />
 			</div>
 			<h:commandLink
-				action="#{descrizioneProdottoController.listDescrizioneProdotti}"
+				action="#{descrizioneProdottoController2.listDescrizioneProdotti}"
 				value="List all Products" />
 		</h:form>
 

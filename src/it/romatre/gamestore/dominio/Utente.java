@@ -134,4 +134,12 @@ public class Utente {
 		this.dataNascita = dataNascita;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 }

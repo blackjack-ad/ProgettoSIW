@@ -38,10 +38,10 @@
 <body>
 	<f:view>
 	<%@ include file="standard-header.jsp"%>
-		<h1>${descrizioneProdottoController.descrizioneProdotto.nome}</h1>
+		<h1>${descrizioneProdottoController2.descrizioneProdotto.nome}</h1>
 		<h2>Dettagli Prodotto</h2>
-		<div>Prezzo: ${descrizioneProdottoController.descrizioneProdotto.prezzo}</div>
-		<div>Descrizione: ${descrizioneProdottoController.descrizioneProdotto.descrizione}</div>
+		<div>Prezzo: ${descrizioneProdottoController2.descrizioneProdotto.prezzo}</div>
+		<div>Descrizione: ${descrizioneProdottoController2.descrizioneProdotto.descrizione}</div>
 
 	</f:view>
 </body>

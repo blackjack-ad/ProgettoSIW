@@ -13,7 +13,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Ordine</title>
+<title>ordini</title>
 
 
 <script
@@ -39,30 +39,28 @@
 <body>
 	<f:view>
 		<%@ include file="standard-header.jsp"%>
-		<h1>Ordine</h1>
-
+		<h1>Catalogo</h1>
 		<table>
 			<tr>
-				<th>NomeProdotto</th>
-				<th>Quantita</th>
+				<th>Codice</th>
+				<th>Data Apertura</th>
+				<th>Stato</th>
 			</tr>
-			<c:forEach var="rigaDiOrdine"
-				items="#{ordineController.ordine.righeDiOrdine}">
+			<c:forEach var="ordine" items="#{ordineController.ordini}">
 				<tr>
 					<td><h:form>
-							<h:commandLink
-								action="#{descrizioneProdottoController2.findDescrizioneProdotto}"
-								value="#{rigaDiOrdine.descrizioneProdotto.nome}">
-								<f:param name="id"
-									value="#{rigaDiOrdine.descrizioneProdotto.id}" />
+							<h:commandLink action="#{ordineController.findOrdine}"
+								value="#{ordine.id}">
+								<f:param name="id" value="#{ordine.id}" />
 							</h:commandLink>
 						</h:form></td>
-					<td>${rigaDiOrdine.quantita}</td>
-					<c:if test="${ordineController.ordine.stato eq 'aperto'}">
+					<td>${ordine.dataInizio}</td>
+					<td>${ordine.stato}</td>
+					<c:if test="${ordine.stato eq 'aperto'}">
 						<td><h:form>
-								<h:commandButton action="#{rigaDiOrdineController.eliminaRiga}"
-									value="Elimina">
-									<f:param name="id" value="#{rigaDiOrdine.id}" />
+								<h:commandButton action="#{ordineController.chiudiOrdine}"
+									value="Chiudi">
+									<f:param name="id" value="#{ordine.id}" />
 								</h:commandButton>
 							</h:form></td>
 					</c:if>

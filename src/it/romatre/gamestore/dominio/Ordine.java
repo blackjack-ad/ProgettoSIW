@@ -29,7 +29,7 @@ public class Ordine {
 	@Column(nullable = true)
 	private Date dataEvasione;
 	
-	@OneToMany(mappedBy="ordine", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	@OneToMany(mappedBy="ordine", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
 	private List<RigaDiOrdine> righeDiOrdine;
 	
 	private String stato;
@@ -38,7 +38,7 @@ public class Ordine {
 	private Utente utente;
 
 	public Ordine() {
-		this.stato = "aperto";
+		this.stato = null;
 		this.dataInizio = new Date();
 		this.dataChiusura = null;
 		this.dataEvasione = null;

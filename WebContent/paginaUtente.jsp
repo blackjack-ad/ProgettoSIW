@@ -16,34 +16,40 @@
 <title>Pagina personale</title>
 </head>
 <body>
-	<f:view><%@ include file="standard-header.jsp"%></f:view>
+	<f:view><%@ include file="standard-header.jsp"%>
 
-	<h2>Ciao ${loginController.utenteCorrente.nome},</h2>
-	<h3>Questi sono i tuoi dati di registrazione:</h3>
-	<div>
-		<strong>Nome: </strong> ${loginController.utenteCorrente.nome}
-	</div>
-	<div>
-		<strong>Cognome: </strong> ${loginController.utenteCorrente.cognome}
-	</div>
-	<div>
-		<strong>Email: </strong> ${loginController.utenteCorrente.email}
-	</div>
-	<div>
-		<strong>Data di nascita: </strong>
-		${loginController.utenteCorrente.dataNascita}
-	</div>
+		<h2>Ciao ${loginController.utenteCorrente.nome},</h2>
+		<h3>Questi sono i tuoi dati di registrazione:</h3>
+		<div>
+			<strong>Nome: </strong> ${loginController.utenteCorrente.nome}
+		</div>
+		<div>
+			<strong>Cognome: </strong> ${loginController.utenteCorrente.cognome}
+		</div>
+		<div>
+			<strong>Email: </strong> ${loginController.utenteCorrente.email}
+		</div>
+		<div>
+			<strong>Data di nascita: </strong>
+			${loginController.utenteCorrente.dataNascita}
+		</div>
 
-	<p>
-	<p>
-	<h4>Operazioni disponibili</h4>
-	<p>
-	<p>
-		<button type="button" class="btn btn-primary"
-			onclick="location.href='faces/ordini.jsp'">I miei ordini</button>
+		<p>
+		<p>
+		<h4>Operazioni disponibili</h4>
+		<p>
+		<p>
+		<h5>
+			<h:form>
+				<h:commandButton action="#{ordineController.listOrdiniUtente}"
+					value="I miei Ordini">
+				</h:commandButton>
+			</h:form>
+		</h5>
 		<button type="button" class="btn btn-primary"
 			onclick="location.href='index.jsp'">Torna alla homepage</button>
-	<p>
-	<p>
+		<p>
+		<p>
+	</f:view>
 </body>
 </html>

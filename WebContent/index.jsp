@@ -96,7 +96,7 @@
 			<p>
 				<h:form>
 					<h:commandButton styleClass="btn btn-primary"
-						action="#{descrizioneProdottoController.listDescrizioneProdotti}"
+						action="#{descrizioneProdottoController2.listDescrizioneProdotti}"
 						value="Consulta il nostro catalogo">
 					</h:commandButton>
 				</h:form>
