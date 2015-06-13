@@ -21,6 +21,7 @@
 </head>
 
 <body>
+
 	<f:view>
 
 		<div class="site-wrapper">
@@ -62,13 +63,13 @@
 											<li><a href="faces/logout.jsp">Logout</a></li>
 										</c:if>
 									</ul>
-									<form class="navbar-form navbar-center" role="search">
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Cerca">
-										</div>
-										<button type="submit" class="btn btn-default"">Vai</button>
-									</form>
-
+									<c:if test="${loginController.loggedIn}">
+										<h4 class="navbar-text navbar-right">
+											Benvenuto <strong><a href="paginaUtente.jsp"
+												style="color: #231A24">${loginController.utenteCorrente.nome}
+													${loginController.utenteCorrente.cognome}</a></strong>&nbsp
+										</h4>
+									</c:if>
 								</div>
 								<!-- /.navbar-collapse -->
 							</div>
