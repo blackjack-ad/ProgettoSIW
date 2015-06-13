@@ -2,15 +2,13 @@ package it.romatre.gamestore.facade;
 
 import it.romatre.gamestore.dominio.Indirizzo;
 import it.romatre.gamestore.dominio.Utente;
+import it.romatre.gamestore.utility.MD5;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaQuery;
-
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 @Stateless 
@@ -22,7 +20,9 @@ public class UtenteFacade {
 	public Utente createUtente(String nome, String cognome, String email, String password, String numeroTelefono, 
 			String stato, String citta, String cap, String via, String dataNascita) {
 		Indirizzo indirizzo = new Indirizzo(stato,citta,cap,via);
-		Utente utente = new Utente(nome, cognome, email, password, numeroTelefono, indirizzo, dataNascita);
+		MD5 codificatoreMD5 = new MD5();
+		String md5PWD = codificatoreMD5.toMD5(password);
+		Utente utente = new Utente(nome, cognome, email, md5PWD, numeroTelefono, indirizzo, dataNascita);
 		em.persist(utente);
 		return utente;
 	}

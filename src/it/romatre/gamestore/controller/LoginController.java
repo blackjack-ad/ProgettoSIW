@@ -2,6 +2,7 @@ package it.romatre.gamestore.controller;
 
 import it.romatre.gamestore.dominio.Utente;
 import it.romatre.gamestore.facade.UtenteFacade;
+import it.romatre.gamestore.utility.MD5;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
@@ -20,17 +21,21 @@ public class LoginController {
 
 	public String verifyPasswordUtente(){
 		Utente current = utenteFacade.getUtente(email);
-		if(current!= null && current.getPassword().equals(password)){
-			FacesContext context = FacesContext.getCurrentInstance();
-			context.getExternalContext().getSessionMap().put("user", current);
-			setLoggedIn(true);
-			setUtenteCorrente(current);
-			return "index";
+		if (current!=null) {
+			//Viene generato il codice MD5 a partire dalla pwd inserita nella form del login
+			MD5 codificatoreMD5 = new MD5();
+			String md5PWD = codificatoreMD5.toMD5(password);
+			if(current.getPassword().equals(md5PWD)){
+				FacesContext context = FacesContext.getCurrentInstance();
+				context.getExternalContext().getSessionMap().put("user", current);
+				setLoggedIn(true);
+				setUtenteCorrente(current);
+				return "index";
+			}
 		}
-		else
-			return "errorLogin";
+		return "errorLogin";
 	}
-	
+
 	public String logout() {
 		setLoggedIn(false);
 		setUtenteCorrente(null);

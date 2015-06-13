@@ -24,42 +24,42 @@
 			<h3>Compilare i seguenti dati per effettuare la registrazione</h3>
 			<h4>Inizia subito ad acquistare su GameStore</h4>
 			<div>
-				Nome:
+				Nome
 				<h:inputText value="#{utenteController.nome}" required="true"
 					requiredMessage=" Il nome e' obbligatorio" id="nome" />
 				<h:message for="nome" />
 			</div>
 			<p>
 			<div>
-				Cognome:
+				Cognome
 				<h:inputText value="#{utenteController.cognome}" required="true"
 					requiredMessage=" Il cognome e' obbligatorio" id="cognome" />
 				<h:message for="cognome" />
 			</div>
 			<p>
 			<div>
-				Email:
+				Email
 				<h:inputText value="#{utenteController.email}" required="true"
 					requiredMessage=" La email e' obbligatorio" id="email" />
 				<h:message for="email" />
 			</div>
 			<p>
 			<div>
-				Crea la password:
+				Crea la password
 				<h:inputSecret value="#{utenteController.password}" required="true"
 					requiredMessage=" La password e' obbligatoria" id="password" />
 				<h:message for="password" />
 			</div>
 			<p>
 			<div>
-				Numero telefono:
+				Numero telefono
 				<h:inputText value="#{utenteController.numeroTelefono}"
 					required="true"
 					requiredMessage=" Il numero di telefono e' necessario"
 					id="telefono" />
 				<h:message for="telefono" />
 			</div>
-			<h4>Data di nascita:</h4>
+			<h4>Data di nascita</h4>
 			<div>
 				Giorno
 				<h:selectOneMenu id="giorno" value="#{utenteController.giorno}">
@@ -139,7 +139,7 @@
 			</div>
 			<p>
 			<div>
-				Via:
+				Via
 				<h:inputText value="#{utenteController.via}" required="true"
 					requiredMessage=" Campo obbligatorio" id="via" />
 				<h:message for="via" />

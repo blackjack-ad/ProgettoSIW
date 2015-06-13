@@ -1,12 +1,8 @@
 package it.romatre.gamestore.dominio;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,11 +10,9 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 @Entity(name="utente")
 public class Utente {
@@ -39,7 +33,7 @@ public class Utente {
 	private String password;
 
 	private String dataNascita;
-	
+
 	@OneToOne (cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
 	private Indirizzo indirizzo;
 
@@ -123,11 +117,11 @@ public class Utente {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String printDataNascita(){
 		return this.dataNascita.toString();
 	}
-	
+
 	public String printIndirizzo(){
 		return this.indirizzo.getStato() + " " + this.indirizzo.getCitta() + " " + this.indirizzo.getCitta();
 	}
@@ -139,5 +133,5 @@ public class Utente {
 	public void setDataNascita(String dataNascita) {
 		this.dataNascita = dataNascita;
 	}
-	
+
 }
