@@ -1,5 +1,7 @@
 package it.romatre.gamestore.controller;
 
+import java.util.List;
+
 import it.romatre.gamestore.dominio.Fornitore;
 import it.romatre.gamestore.facade.FornitoreFacade;
 
@@ -21,10 +23,26 @@ public class FornitoreController {
 	private String via;
 	private String cap;
 	private Fornitore fornitore;
-	
+	private List<Fornitore> fornitori;
+
 	public String createFornitore() {
 		this.fornitore = fornitoreFacade.createFornitore(nome, email, telefono, stato, citta, cap, via, partitaIVA);
 		return "fornitore"; 
+	}
+
+	public String listFornitori() {
+		this.fornitori = fornitoreFacade.getAllFornitori();
+		return "fornitori"; 
+	}
+
+
+
+	public List<Fornitore> getFornitori() {
+		return fornitori;
+	}
+
+	public void setFornitori(List<Fornitore> fornitori) {
+		this.fornitori = fornitori;
 	}
 
 	public FornitoreFacade getFornitoreFacade() {
@@ -106,7 +124,7 @@ public class FornitoreController {
 	public void setFornitore(Fornitore fornitore) {
 		this.fornitore = fornitore;
 	}
-	
-	
-	
+
+
+
 }

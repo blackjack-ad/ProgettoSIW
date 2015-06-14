@@ -41,7 +41,7 @@
 		onclick="location.href='faces/nuovoFornitore.jsp'">Inserisci
 		un nuovo fornitore</button>
 
-	<button type="button" class="btn btn-primary">Inserisci
+	<button type="button" class="btn btn-primary" onclick="location.href='faces/prodottiMagazzino.jsp'">Inserisci
 		prodotto nel magazzino</button>
 
 	<button type="button" class="btn btn-primary">Evadi Ordine</button>

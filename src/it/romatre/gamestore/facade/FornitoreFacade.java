@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
@@ -12,7 +13,7 @@ import it.romatre.gamestore.dominio.Indirizzo;
 
 @Stateless
 public class FornitoreFacade {
-	
+
 	@PersistenceContext(unitName = "unit-fornitore")
 	private EntityManager em;
 
@@ -32,4 +33,13 @@ public class FornitoreFacade {
 		else return fornitori.get(0);
 
 	}
+
+
+	public List<Fornitore> getAllFornitori() {
+		List<Fornitore> fornitori;
+		Query q = em.createQuery("SELECT f FROM fornitore f");
+		fornitori = q.getResultList();
+		return fornitori;
+	}
+
 }
