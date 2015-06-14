@@ -1,9 +1,17 @@
 package it.romatre.gamestore.dominio;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+
+@Entity(name="prodotto")
 public class Prodotto {
 	
+	@Column(nullable = false)
 	private Long codiceSeriale;
+	@ManyToOne
 	private DescrizioneProdotto descrizione;
+	@ManyToOne
 	private Fornitore fornitore;
 
 	public Prodotto(Long codiceSeriale, DescrizioneProdotto descrizione, Fornitore fornitore) {

@@ -23,11 +23,31 @@
 		</properties>
 	</persistence-unit>
 	
+	<persistence-unit name="unit-prodotto" transaction-type="JTA">
+		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+		<jta-data-source>PostgreSQL Database</jta-data-source>
+ 	<!--  	<non-jta-data-source>PostgreSQL Database</non-jta-data-source> -->
+		<class>it.romatre.gamestore.dominio.Prodotto</class>
+		<properties>
+			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
+		</properties>
+	</persistence-unit>
+	
 	<persistence-unit name="unit-utente" transaction-type="JTA">
 		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
 		<jta-data-source>PostgreSQL Database</jta-data-source>
  	<!--  	<non-jta-data-source>PostgreSQL Database</non-jta-data-source> -->
 		<class>it.romatre.gamestore.dominio.Utente</class>
+		<properties>
+			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
+		</properties>
+	</persistence-unit>
+	
+	<persistence-unit name="unit-fornitore" transaction-type="JTA">
+		<provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+		<jta-data-source>PostgreSQL Database</jta-data-source>
+ 	<!--  	<non-jta-data-source>PostgreSQL Database</non-jta-data-source> -->
+		<class>it.romatre.gamestore.dominio.Fornitore</class>
 		<properties>
 			<property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)" />
 		</properties>

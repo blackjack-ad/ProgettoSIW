@@ -37,6 +37,9 @@
 	<button type="button" class="btn btn-primary"
 		onclick="location.href='faces/nuovaDescrizioneProdotto.jsp'">Inserisci
 		prodotto nel catalogo</button>
+	<button type="button" class="btn btn-primary"
+		onclick="location.href='faces/nuovoFornitore.jsp'">Inserisci
+		un nuovo fornitore</button>
 
 	<button type="button" class="btn btn-primary">Inserisci
 		prodotto nel magazzino</button>
