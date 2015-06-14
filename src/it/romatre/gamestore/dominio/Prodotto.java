@@ -1,24 +1,38 @@
 package it.romatre.gamestore.dominio;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 
 @Entity(name="prodotto")
 public class Prodotto {
-	
-	@Column(nullable = false)
+	@Column(nullable = false, unique=true)
 	private Long codiceSeriale;
-	@ManyToOne
+	@OneToOne
 	private DescrizioneProdotto descrizione;
-	@ManyToOne
-	private Fornitore fornitore;
 
-	public Prodotto(Long codiceSeriale, DescrizioneProdotto descrizione, Fornitore fornitore) {
+	@ManyToMany
+	private List<Fornitore> fornitori;
+
+	public Prodotto(){
+		this.descrizione = descrizione;
+		this.codiceSeriale = codiceSeriale;
+		this.fornitori = new ArrayList<Fornitore>();
+	}
+
+	public Prodotto(Long codiceSeriale, DescrizioneProdotto descrizione) {
 		super();
 		this.descrizione = descrizione;
 		this.codiceSeriale = codiceSeriale;
-		this.fornitore = fornitore;
+		this.fornitori = new ArrayList<Fornitore>();
 	}
 
 	public long getCodiceSeriale() {
@@ -37,13 +51,16 @@ public class Prodotto {
 		this.descrizione = descrizione;
 	}
 
-	public Fornitore getFornitore() {
-		return fornitore;
+	public Collection<Fornitore> getFornitori() {
+		return fornitori;
 	}
 
-	public void setFornitore(Fornitore fornitore) {
-		this.fornitore = fornitore;
+	public void setFornitori(List<Fornitore> fornitori) {
+		this.fornitori = fornitori;
 	}
-	
-	
+
+	public void addFornitore(Fornitore f) {
+		fornitori.add(f);	
+	}
+
 }

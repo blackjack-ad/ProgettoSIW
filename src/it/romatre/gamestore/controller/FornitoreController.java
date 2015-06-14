@@ -5,6 +5,7 @@ import java.util.List;
 import it.romatre.gamestore.dominio.Fornitore;
 import it.romatre.gamestore.facade.FornitoreFacade;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 
@@ -22,6 +23,8 @@ public class FornitoreController {
 	private String citta;
 	private String via;
 	private String cap;
+	private Long id; 
+	private Long idFornitore;
 	private Fornitore fornitore;
 	private List<Fornitore> fornitori;
 
@@ -32,7 +35,7 @@ public class FornitoreController {
 
 	public String listFornitori() {
 		this.fornitori = fornitoreFacade.getAllFornitori();
-		return "fornitori"; 
+		return "prodottiMagazzino"; 
 	}
 
 
@@ -125,6 +128,32 @@ public class FornitoreController {
 		this.fornitore = fornitore;
 	}
 
+	public Long getId() {
+		return id;
+	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
+
+	public Long getIdFornitore() {
+		return idFornitore;
+	}
+
+	public void setIdFornitore(Long idFornitore) {
+		this.idFornitore = idFornitore;
+	}
+
+	@PostConstruct
+	public void init() {
+	    listFornitori();
+	    // If this is a static list, you'd rather put this
+	    // in a separate application scoped bean instead.
+	}
+	
+	public void submit() {
+	    System.out.println("Selected country code: " + id);
+	}
 
 }

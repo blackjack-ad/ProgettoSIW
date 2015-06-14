@@ -24,29 +24,26 @@
 			<div>
 				Codice Seriale
 				<h:inputText value="#{prodottoController.codiceSeriale}"
-					required="true"
-					requiredMessage="Il codice del prodotto e' obbligatorio"
-					id="codice" />
-				<h:message for="codice" />
+					/>
 			</div>
 			<p>
 			<div>
 				Fornitore
-				<h:selectOneMenu id="fornitore"
-					value="#{prodottoController.fornitore}">
-					<!--<f:selectItems value="#{fornitoreController.fornitori}"
+				<h:selectManyListbox value="#{prodottoController.idFornitori}">
+					<f:selectItem itemValue="#{null}" itemLabel="-- select one or more --" />
+					<f:selectItems value="#{prodottoController.fornitori}"
 						var="fornitore" itemLabel="#{fornitore.nome}"
-						itemValue="#{fornitore}" />-->
-				</h:selectOneMenu>
+						itemValue="#{fornitore.id}" />
+				</h:selectManyListbox>
 			</div>
 
-			<div>
-				Tipo prodotto nel catalogo
-				<h:selectOneMenu id="descrizione"
-					value="#{prodottoController.descrizione}">
-					<!--<f:selectItems value="#{descrizioneProdottoController.descrizioneProdotti}"
+				<div>
+				Tipo Prodotto
+				<h:selectOneMenu value="#{prodottoController.idDescrizioneProdotto}">
+					<f:selectItem itemValue="#{null}" itemLabel="-- select one--" />
+					<f:selectItems value="#{prodottoController.descrizioneProdotti}"
 						var="descrizione" itemLabel="#{descrizione.nome}"
-						itemValue="#{descrizioneProdotto}" />-->
+						itemValue="#{descrizione.id}" />
 				</h:selectOneMenu>
 			</div>
 

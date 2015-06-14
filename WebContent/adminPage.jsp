@@ -33,17 +33,20 @@
 <body>
 	<f:view>
 		<%@ include file="standard-header.jsp"%>
+
+		<button type="button" class="btn btn-primary"
+			onclick="location.href='faces/nuovaDescrizioneProdotto.jsp'">Inserisci
+			prodotto nel catalogo</button>
+		<button type="button" class="btn btn-primary"
+			onclick="location.href='faces/nuovoFornitore.jsp'">Inserisci
+			un nuovo fornitore</button>
+
+		<h:form>
+			<h:commandButton action="#{prodottoController.listFornitori}"
+				value="Inserisci prodotto in magazzino"></h:commandButton>
+		</h:form>
+
+		<button type="button" class="btn btn-primary">Evadi Ordine</button>
 	</f:view>
-	<button type="button" class="btn btn-primary"
-		onclick="location.href='faces/nuovaDescrizioneProdotto.jsp'">Inserisci
-		prodotto nel catalogo</button>
-	<button type="button" class="btn btn-primary"
-		onclick="location.href='faces/nuovoFornitore.jsp'">Inserisci
-		un nuovo fornitore</button>
-
-	<button type="button" class="btn btn-primary" onclick="location.href='faces/prodottiMagazzino.jsp'">Inserisci
-		prodotto nel magazzino</button>
-
-	<button type="button" class="btn btn-primary">Evadi Ordine</button>
 </body>
 </html>
