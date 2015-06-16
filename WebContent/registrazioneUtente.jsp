@@ -2,10 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,185 +11,163 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Gamestore</title>
-
 <!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="ubuntu/bootstrap.min.css" rel="stylesheet">
 
-<!-- Custom styles for this template -->
-<link href="cover.css" rel="stylesheet">
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-<link
-	href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,700,100italic'
-	rel='stylesheet' type='text/css'>
+<title>Nuovo Utente</title>
 </head>
-
 <body>
+
 	<f:view>
-		<div class="site-wrapper">
-
-			<div class="site-wrapper-inner">
-
-				<div class="cover-container">
-
-					<div class="masthead clearfix">
-						<div class="inner">
-							<nav class="navbar navbar-inverse navbar-static-top">
-							<div class="container-fluid">
-								<!-- Brand and toggle get grouped for better mobile display -->
-								<div class="navbar-header">
-									<button type="button" class="navbar-toggle collapsed"
-										data-toggle="collapse"
-										data-target="#bs-example-navbar-collapse-1">
-										<span class="sr-only">Toggle navigation</span> <span
-											class="icon-bar"></span> <span class="icon-bar"></span> <span
-											class="icon-bar"></span>
-									</button>
-									<a class="navbar-brand" href="#">GameStore</a>
-								</div>
-
-								<!-- Collect the nav links, forms, and other content for toggling -->
-								<div class="collapse navbar-collapse"
-									id="bs-example-navbar-collapse-1">
-									<ul class="nav navbar-nav">
-
-										<li><a href="#">Accedi come utente</a></li>
-
-										<li><a href="adminPage.jsp">Accedi come
-												amministratore</a></li>
-
-										<li><a href="faces/registrazioneUtente.jsp">Registrati</a></li>
-									</ul>
-									<form class="navbar-form navbar-center" role="search">
-										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Cerca">
-										</div>
-										<button type="submit" class="btn btn-default">Vai</button>
-									</form>
-								</div>
-								<!-- /.navbar-collapse -->
-							</div>
-							<!-- /.container-fluid --> </nav>
-
-
-						</div>
-					</div>
-					<h:form>
-						<h3>Compilare i seguenti dati per effettuare la registrazione</h3>
-						<h4>Inizia subito ad acquistare su GameStore</h4>
-						<p>
-						<div>
-							Nome:
-							<h:inputText value="#{utenteController.nome}" required="true"
-								requiredMessage=" Il nome e' obbligatorio" id="nome" />
-							<h:message for="nome" />
-							Cognome:
-							<h:inputText value="#{utenteController.cognome}" required="true"
-								requiredMessage=" Il cognome e' obbligatorio" id="cognome" />
-							<h:message for="cognome" />
-						</div>
-						<p>
-						<div>
-							Email:
-							<h:inputText value="#{utenteController.email}" required="true"
-								requiredMessage=" La email e' obbligatorio" id="email" />
-							<h:message for="email" />
-						</div>
-						<p>
-						<div>
-							Crea la password:
-							<h:inputSecret value="#{utenteController.password}" required="true"
-								requiredMessage=" La password e' obbligatoria" id="password" />
-							<h:message for="password" />
-						</div>
-						<p>
-						<div>
-							Numero telefono:
-							<h:inputText value="#{utenteController.numeroTelefono}"
-								required="true"
-								requiredMessage=" Il numero di telefono e' necessario"
-								id="telefono" />
-							<h:message for="telefono" />
-						</div>
-						<p>
-						<h4>Data di nascita:</h4>
-						<div>
-							Giorno
-							<h:inputText value="#{utenteController.giorno}" required="true"
-								requiredMessage=" Campo obbligatorio" id="giorno" />
-							<h:message for="giorno" />
-
-							Mese
-							<h:inputText value="#{utenteController.mese}" required="true"
-								requiredMessage=" Campo obbligatorio" id="mese" />
-							<h:message for="mese" />
-
-							Anno
-							<h:inputText value="#{utenteController.anno}" required="true"
-								requiredMessage=" Campo obbligatorio" id="anno" />
-							<h:message for="anno" />
-						</div>
-						<p>
-						<h4>Indirizzo di residenza</h4>
-						<div>
-							Stato:
-							<h:inputText value="#{utenteController.stato}" required="true"
-								requiredMessage=" Campo obbligatorio" id="stato" />
-							<h:message for="stato" />
-						</div>
-						<p>
-						<div>
-							Citta':
-							<h:inputText value="#{utenteController.citta}" required="true"
-								requiredMessage=" Campo obbligatorio" id="citta" />
-							<h:message for="citta" />
-
-							Cap:
-							<h:inputText value="#{utenteController.cap}" required="true"
-								requiredMessage=" Campo obbligatorio" id="cap" />
-							<h:message for="cap" />
-
-							Via:
-							<h:inputText value="#{utenteController.via}" required="true"
-								requiredMessage=" Campo obbligatorio" id="via" />
-							<h:message for="via" />
-							<p>
-							<p>
-								<h:commandButton value="Invia"
-									action="#{utenteController.createUtente}" />
-						</div>
-					</h:form>
-
-					<div>
-						<p>
-						<p>
-						<p>Cliccando sul pulsante "Invia", acconsento che:
-						<ul>
-							<li>Ho almeno 18 anni di eta'</li>
-							<li>Ho inserito dati validi</li>
-							<li>Accetto il trattamento dei miei dati personali</li>
-						</ul>
-					</div>
-					<div>
-						<a href="homepage.jsp"> Homepage</a>
-					</div>
-
-					<!-- Bootstrap core JavaScript
-    ================================================== -->
-					<!-- Placed at the end of the document so the pages load faster -->
-					<script
-						src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-					<script src="js/bootstrap.min.js"></script>
-					<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-					<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-				</div>
+		<%@ include file="standard-header.jsp"%>
+		<h:form>
+			<h3>Compilare i seguenti dati per effettuare la registrazione</h3>
+			<h4>Inizia subito ad acquistare su GameStore</h4>
+			<div>
+				Nome
+				<h:inputText value="#{utenteController.nome}" required="true"
+					requiredMessage=" Il nome e' obbligatorio" id="nome" />
+				<h:message for="nome" />
 			</div>
+			<p>
+			<div>
+				Cognome
+				<h:inputText value="#{utenteController.cognome}" required="true"
+					requiredMessage=" Il cognome e' obbligatorio" id="cognome" />
+				<h:message for="cognome" />
+			</div>
+			<p>
+			<div>
+				Email
+				<h:inputText value="#{utenteController.email}" required="true"
+					requiredMessage=" La email e' obbligatorio" id="email" />
+				<h:message for="email" />
+			</div>
+			<p>
+			<div>
+				Crea la password
+				<h:inputSecret value="#{utenteController.password}" required="true"
+					requiredMessage=" La password e' obbligatoria" id="password" />
+				<h:message for="password" />
+			</div>
+			<p>
+			<div>
+				Numero telefono
+				<h:inputText value="#{utenteController.numeroTelefono}"
+					required="true"
+					requiredMessage=" Il numero di telefono e' necessario"
+					id="telefono" />
+				<h:message for="telefono" />
+			</div>
+			<h4>Data di nascita</h4>
+			<div>
+				Giorno
+				<h:selectOneMenu id="giorno" value="#{utenteController.giorno}">
+					<f:selectItem id="item1" itemLabel="01" itemValue="1" />
+					<f:selectItem id="item2" itemLabel="02" itemValue="2" />
+					<f:selectItem id="item3" itemLabel="03" itemValue="3" />
+					<f:selectItem id="item4" itemLabel="04" itemValue="4" />
+					<f:selectItem id="item5" itemLabel="05" itemValue="5" />
+					<f:selectItem id="item6" itemLabel="06" itemValue="6" />
+					<f:selectItem id="item7" itemLabel="07" itemValue="7" />
+					<f:selectItem id="item8" itemLabel="08" itemValue="8" />
+					<f:selectItem id="item9" itemLabel="09" itemValue="9" />
+					<f:selectItem id="item10" itemLabel="10" itemValue="10" />
+					<f:selectItem id="item11" itemLabel="11" itemValue="11" />
+					<f:selectItem id="item12" itemLabel="12" itemValue="12" />
+					<f:selectItem id="item13" itemLabel="13" itemValue="13" />
+					<f:selectItem id="item14" itemLabel="14" itemValue="14" />
+					<f:selectItem id="item15" itemLabel="15" itemValue="15" />
+					<f:selectItem id="item16" itemLabel="16" itemValue="16" />
+					<f:selectItem id="item17" itemLabel="17" itemValue="17" />
+					<f:selectItem id="item18" itemLabel="18" itemValue="18" />
+					<f:selectItem id="item19" itemLabel="19" itemValue="19" />
+					<f:selectItem id="item20" itemLabel="20" itemValue="20" />
+					<f:selectItem id="item21" itemLabel="21" itemValue="21" />
+					<f:selectItem id="item22" itemLabel="22" itemValue="22" />
+					<f:selectItem id="item23" itemLabel="23" itemValue="23" />
+					<f:selectItem id="item24" itemLabel="24" itemValue="24" />
+					<f:selectItem id="item25" itemLabel="25" itemValue="25" />
+					<f:selectItem id="item26" itemLabel="26" itemValue="26" />
+					<f:selectItem id="item27" itemLabel="27" itemValue="27" />
+					<f:selectItem id="item28" itemLabel="28" itemValue="28" />
+					<f:selectItem id="item29" itemLabel="29" itemValue="29" />
+					<f:selectItem id="item30" itemLabel="30" itemValue="30" />
+					<f:selectItem id="item31" itemLabel="31" itemValue="31" />
+				</h:selectOneMenu>
+
+				Mese
+				<h:selectOneMenu id="mese" value="#{utenteController.mese}">
+					<f:selectItem id="itemm1" itemLabel="01" itemValue="1" />
+					<f:selectItem id="itemm2" itemLabel="02" itemValue="2" />
+					<f:selectItem id="itemm3" itemLabel="03" itemValue="3" />
+					<f:selectItem id="itemm4" itemLabel="04" itemValue="4" />
+					<f:selectItem id="itemm5" itemLabel="05" itemValue="5" />
+					<f:selectItem id="itemm6" itemLabel="06" itemValue="6" />
+					<f:selectItem id="itemm7" itemLabel="07" itemValue="7" />
+					<f:selectItem id="itemm8" itemLabel="08" itemValue="8" />
+					<f:selectItem id="itemm9" itemLabel="09" itemValue="9" />
+					<f:selectItem id="itemm10" itemLabel="10" itemValue="10" />
+					<f:selectItem id="itemm11" itemLabel="11" itemValue="11" />
+					<f:selectItem id="itemm12" itemLabel="12" itemValue="12" />
+				</h:selectOneMenu>
+				Anno
+				<h:inputText value="#{utenteController.anno}" required="true"
+					requiredMessage=" Campo obbligatorio" id="anno" />
+				<h:message for="anno" />
+			</div>
+			<h4>Indirizzo di residenza</h4>
+			<div>
+				Stato
+				<h:inputText value="#{utenteController.stato}" required="true"
+					requiredMessage=" Campo obbligatorio" id="stato" />
+				<h:message for="stato" />
+			</div>
+			<p>
+			<div>
+				Citta'
+				<h:inputText value="#{utenteController.citta}" required="true"
+					requiredMessage=" Campo obbligatorio" id="citta" />
+				<h:message for="citta" />
+			</div>
+			<p>
+			<div>
+				Cap
+				<h:inputText value="#{utenteController.cap}" required="true"
+					requiredMessage=" Campo obbligatorio" id="cap" />
+				<h:message for="cap" />
+			</div>
+			<p>
+			<div>
+				Via
+				<h:inputText value="#{utenteController.via}" required="true"
+					requiredMessage=" Campo obbligatorio" id="via" />
+				<h:message for="via" />
+			</div>
+			<p>
+			<p>
+			<div>
+				<h:commandButton value="Invia"
+					action="#{utenteController.createUtente}" />
+			</div>
+		</h:form>
+		<p>
+		<div>
+
+			Cliccando sul pulsante "Invia", acconsento che:
+			<ul>
+				<li>Ho almeno 18 anni di eta'</li>
+				<li>Ho inserito dati validi</li>
+				<li>Accetto il trattamento dei miei dati personali</li>
+			</ul>
 		</div>
+		<div>
+			<a href="homepage.jsp"> Homepage</a>
+		</div>
+
 	</f:view>
+
+
+
 </body>
 </html>

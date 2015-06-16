@@ -2,6 +2,7 @@
 	pageEncoding="US-ASCII"%>
 <%@ taglib prefix="f" uri="http://java.sun.com/jsf/core"%>
 <%@ taglib prefix="h" uri="http://java.sun.com/jsf/html"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,11 +14,16 @@
 
 <title>nuovaDescrizioneProdotto</title>
 
+
+<script
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
+	type="text/javascript"></script>
+
 <!-- Bootstrap core CSS -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="ubuntu/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
-<link href="cover.css" rel="stylesheet">
+
 
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -30,29 +36,52 @@
 
 </head>
 <body>
+
 	<f:view>
 
 		<h:form>
+			<h1>Inserisci i dati del prodotto da inserire nel catalogo</h1>
 			<div>
 				Nome:
-				<h:inputText value="#{descrizioneProdottoController.nome}"
-					required="false" requiredMessage="Il nome è obbligatorio" id="nome" />
-				<h:message for="nome" />
+				<h:inputText value="#{descrizioneProdottoController2.nome}" />
 			</div>
 			<div>
 				Prezzo:
-				<h:inputText value="#{descrizioneProdottoController.prezzo}" />
+				<h:inputText value="#{descrizioneProdottoController2.prezzo}" />
 			</div>
 			<div>
 				Descrizione:
-				<h:inputText value="#{descrizioneProdottoController.descrizione}" />
+				<h:inputText value="#{descrizioneProdottoController2.descrizione}" />
+			</div>
+
+			<div>
+				<h:form>
+					<input type='file' id="imgInp" />
+					<img id="blah" src="#" alt="your image" />
+					<h:commandButton action="#{descrizioneProdottoController.immagine}"></h:commandButton>
+					<script type="text/javascript">
+					function readURL(input) {
+						if (input.files && input.files[0]) {
+							var reader = new FileReader();
+
+							reader.onload = function(e) {
+								$('#blah').attr('src', e.target.result);
+								
+							}
+							reader.readAsDataURL(input.files[0]);
+					
+						}
+					}
+					$('#imgInp').change( function(){ readURL(this);} );
+				</script>
+				</h:form>
 			</div>
 			<div>
 				<h:commandButton value="Inserisci"
-					action="#{descrizioneProdottoController.createDescrizioneProdotto}" />
+					action="#{descrizioneProdottoController2.createDescrizioneProdotto}" />
 			</div>
 			<h:commandLink
-				action="#{descrizioneProdottoController.listDescrizioneProdotti}"
+				action="#{descrizioneProdottoController2.listDescrizioneProdotti}"
 				value="List all Products" />
 		</h:form>
 

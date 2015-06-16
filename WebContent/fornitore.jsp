@@ -13,37 +13,29 @@
 
 <!-- Bootstrap core CSS -->
 <link href="ubuntu/bootstrap.min.css" rel="stylesheet">
-<title>Conferma registrazione</title>
+<title>Conferma inserimento fornitore</title>
 </head>
 <body>
 	<f:view><%@ include file="standard-header.jsp"%></f:view>
 
-	<h2>Registrazione avvenuta con successo</h2>
+	<h2>Fornitore inserito con successo</h2>
 	<h3>Dati registrazione:</h3>
 	<div>
-		<strong>Nome: </strong> ${utenteController.utente.nome}
+		<strong>Nome: </strong> ${fornitoreController.fornitore.nome}
 	</div>
 	<div>
-		<strong>Cognome: </strong> ${utenteController.utente.cognome}
+		<strong>Email: </strong> ${fornitoreController.fornitore.email}
 	</div>
 	<div>
-		<strong>Email: </strong> ${utenteController.utente.email}
-	</div>
-	<div>
-		<strong>Data di nascita: </strong>
-		${utenteController.utente.dataNascita}
-	</div>
-
-	<div>
-		<strong>Indirizzo: </strong> ${utenteController.utente.indirizzo.via},
-		${utenteController.utente.indirizzo.citta}
-		(${utenteController.utente.indirizzo.cap})
+		<strong>Indirizzo: </strong> ${fornitoreController.fornitore.indirizzo.stato}, ${fornitoreController.fornitore.indirizzo.via},
+		${fornitoreController.fornitore.indirizzo.citta}
+		(${fornitoreController.fornitore.indirizzo.cap})
 	</div>
 	<div>
 		<p>
 		<p>
 		<h4>
-			Torna alla <a href="index.jsp"> homepage</a>
+			Torna alla <a href="index.jsp"> homepage</a> oppure alla pagina dell'<a href="adminPage.jsp"> admin</a>
 		</h4>
 	</div>
 
