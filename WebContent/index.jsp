@@ -50,8 +50,6 @@
 								<div class="collapse navbar-collapse"
 									id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav">
-
-
 										<li><a href="faces/adminPage.jsp">Accedi come
 												amministratore</a></li>
 
@@ -65,7 +63,7 @@
 									</ul>
 									<c:if test="${loginController.loggedIn}">
 										<h4 class="navbar-text navbar-right">
-											Benvenuto <strong><a href="paginaUtente.jsp"
+											Benvenuto <strong><a href="faces/paginaUtente.jsp"
 												style="color: #231A24">${loginController.utenteCorrente.nome}
 													${loginController.utenteCorrente.cognome}</a></strong>&nbsp
 										</h4>

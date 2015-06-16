@@ -37,9 +37,16 @@
 
 								<c:if test="${loginController.loggedIn}">
 									<h4 class="navbar-text navbar-right">
-										Benvenuto <strong><a href="paginaUtente.jsp"
+										Benvenuto <strong><a href="faces/paginaUtente.jsp"
 											style="color: #231A24">${loginController.utenteCorrente.nome}
 												${loginController.utenteCorrente.cognome}</a></strong>&nbsp
+									</h4>
+								</c:if>
+								
+							<c:if test="${loginController.creatingOrder}">
+									<h4 class="navbar-text navbar-right">
+										 <strong><a href="ordine.jsp"
+											style="color: #231A24">Ordine<span class="badge">${ordineController.num}</span></a></strong>&nbsp
 									</h4>
 								</c:if>
 							</div>

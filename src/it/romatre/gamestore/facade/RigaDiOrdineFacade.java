@@ -28,6 +28,9 @@ public class RigaDiOrdineFacade {
 		em.remove(riga);
 	}
 
+	public RigaDiOrdine getRigaDiOrdine(Long id){
+    	return em.find(RigaDiOrdine.class,id);
+    }
 	public void deleteRigaDiOrdine(Long id) {
 		RigaDiOrdine riga = em.find(RigaDiOrdine.class, id);
 		deleteRigaDiOrdine(riga);

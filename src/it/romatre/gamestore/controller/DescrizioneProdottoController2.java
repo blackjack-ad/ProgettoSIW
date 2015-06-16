@@ -1,7 +1,6 @@
 package it.romatre.gamestore.controller;
 
 import java.util.List;
-
 //import it.romatre.gamestore.dominio.Azienda;
 import it.romatre.gamestore.dominio.DescrizioneProdotto;
 import it.romatre.gamestore.dominio.RigaDiOrdine;
@@ -43,6 +42,18 @@ public class DescrizioneProdottoController2 {
 		return "products"; 
 	}
 
+	public String listDescrizioneProdotti2() {
+		this.descrizioneProdotti = descrizioneProdottoFacade.getAllDescrizioneProdotti();
+		this.ordineController.setOrdineX(ordineController.getOrdineFacade().getOrdine(id));
+		return "products"; 
+	}
+	
+	public String listDescrizioneProdotti2(Long id) {
+		this.descrizioneProdotti = descrizioneProdottoFacade.getAllDescrizioneProdotti();
+		this.ordineController.setOrdineX(ordineController.getOrdineFacade().getOrdine(id));
+		return "products"; 
+	}
+	
 	public String findDescrizioneProdotto() {
 		this.descrizioneProdotto = descrizioneProdottoFacade.getDescrizioneProdotto(id);
 		return "product";
@@ -111,9 +122,9 @@ public class DescrizioneProdottoController2 {
 		r.setDescrizioneProdotto(dp);
 		r.setQuantita(quantita);
 		ordineController.addRiga(r);
-		return "ordine";
+		this.quantita = null; 
+		return listDescrizioneProdotti();
 	}
-	
 	public String creaRigaDiOrdine(Long id){
 
 //		String id = FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("id");
@@ -123,7 +134,8 @@ public class DescrizioneProdottoController2 {
 		r.setDescrizioneProdotto(dp);
 		r.setQuantita(quantita);
 		ordineController.addRiga(r);
-		return "ordine";
+		this.quantita = null; 
+		return listDescrizioneProdotti();
 	}
 
 	public Integer getQuantita() {

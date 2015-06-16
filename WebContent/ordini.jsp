@@ -15,7 +15,6 @@
 
 <title>ordini</title>
 
-
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"
 	type="text/javascript"></script>
@@ -39,7 +38,7 @@
 <body>
 	<f:view>
 		<%@ include file="standard-header.jsp"%>
-		<h1>Catalogo</h1>
+		<h1>I miei ordini</h1>
 		<table>
 			<tr>
 				<th>Codice</th>

@@ -23,7 +23,7 @@ public class RigaDiOrdine {
 	@OneToOne(fetch=FetchType.EAGER)
 	private DescrizioneProdotto descrizioneProdotto;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Ordine ordine;
 
 	public RigaDiOrdine(){

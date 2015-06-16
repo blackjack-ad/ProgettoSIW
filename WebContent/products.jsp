@@ -69,13 +69,6 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<c:if test="${loginController.creatingOrder}">
-			<h:form>
-				<h:commandButton action="#{ordineController.persistiOrdine}"
-					value="Conferma Ordine">
-				</h:commandButton>
-			</h:form>
-		</c:if>
 	</f:view>
 </body>
 </html>

@@ -69,6 +69,51 @@
 				</tr>
 			</c:forEach>
 		</table>
+			<c:if test="${ordineController.ordine.stato eq null}">
+			<td><h:form>
+					<h:commandButton
+						action="#{descrizioneProdottoController2.listDescrizioneProdotti}"
+						value="Aggiungi altri prodotti">
+						<f:param name="id" value="#{ordineController.ordine.id}" />
+					</h:commandButton>
+				</h:form></td>
+		</c:if>
+		<c:if test="${ordineController.ordine.stato eq null}">
+			<td><h:form>
+					<h:commandButton
+						action="#{ordineController.persistiOrdine}"
+						value="Conferma Ordine">
+						<f:param name="id" value="#{ordineController.ordine.id}" />
+					</h:commandButton>
+				</h:form></td>
+		</c:if>
+		
+		<c:if test="${ordineController.ordine.stato eq 'aperto'}">
+			<td><h:form>
+					<h:commandButton
+						action="#{descrizioneProdottoController2.listDescrizioneProdotti2}"
+						value="Aggiungi altri prodotti">
+						<f:param name="id" value="#{ordineController.ordine.id}" />
+					</h:commandButton>
+				</h:form></td>
+		</c:if>
+		
+		<c:if test="${ordineController.ordine.stato eq 'aperto'}">
+			<td><h:form>
+					<h:commandButton
+						action="#{ordineController.chiudiOrdine}"
+						value="ChiudiOrdine">
+						<f:param name="id" value="#{ordineController.ordine.id}" />
+					</h:commandButton>
+				</h:form></td>
+		</c:if>
+		
+		<c:if test="${ordineController.ordine.stato eq 'chiuso'}">
+			<td>In attesa di essere evaso</td>
+		</c:if>
+		<c:if test="${ordineController.ordine.stato eq 'evaso'}">
+			<td>In spedizione</td>
+		</c:if>
 	</f:view>
 </body>
 </html>
