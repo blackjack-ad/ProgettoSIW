@@ -10,6 +10,7 @@ import it.romatre.gamestore.dominio.Utente;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.faces.bean.ManagedProperty;
 import javax.persistence.EntityManager;
@@ -20,7 +21,9 @@ import javax.persistence.criteria.CriteriaQuery;
 
 @Stateless
 public class OrdineFacade {
-
+	
+	@EJB
+	private RigaDiOrdineFacade rigaDiOrdineFacade;
 
 	@ManagedProperty(value="#{rigaDiOrdineController}")
 	private RigaDiOrdineController rigaDiOrdineController;
@@ -84,23 +87,28 @@ public class OrdineFacade {
 	
 	public boolean evasionePossibile(Ordine ordine) {
 		List<RigaDiOrdine> righeDiOrdine = new ArrayList<RigaDiOrdine>(ordine.getRigheDiOrdine());
-	
+		boolean possibile = true; 
 		for (RigaDiOrdine rdo : righeDiOrdine) {
-			System.out.println(rdo + "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
-			if (!this.rigaDiOrdineController.presentiInMagazzino(rdo)){
-				System.out.println( "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLXXX");
-				return false;
+			System.out.println("presenti in magazino:" + rigaDiOrdineFacade.presentiInMagazzino(rdo) +
+					"quantità:" + rdo.getQuantita());
+			possibile = rigaDiOrdineFacade.presentiInMagazzino(rdo)>rdo.getQuantita();
+			System.out.println(possibile);
+		}
+		if(possibile){
+			for(RigaDiOrdine rdo : righeDiOrdine){
+				rigaDiOrdineFacade.rimuoviProdotto(rdo);
 			}
+		}		
+		
+		return possibile;
+	}
+
+	private boolean presentiInMagazzino(RigaDiOrdine rdo) {
+		if (rigaDiOrdineFacade.presentiInMagazzino(rdo)>rdo.getQuantita()) {
+			rigaDiOrdineFacade.rimuoviProdotto(rdo);
+			return true;
 		}
-		
-		
-		
-		for (RigaDiOrdine rdo : righeDiOrdine) {
-			this.rigaDiOrdineController.evadiProdotti(rdo);
-				
-		}
-		
-		return true;
+		return false;
 	}
 
 }

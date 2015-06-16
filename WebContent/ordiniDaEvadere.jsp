@@ -62,6 +62,14 @@
 								</h:commandButton>
 							</h:form></td>
 					</c:if>
+					<c:if test="${ordine.stato eq 'sospeso'}">
+						<td><h:form>
+								<h:commandButton action="#{ordineController.evadiOrdine}"
+									value="Evadi">
+									<f:param name="id" value="#{ordine.id}" />
+								</h:commandButton>
+							</h:form></td>
+					</c:if>
 				</tr>
 			</c:forEach>
 		</table>

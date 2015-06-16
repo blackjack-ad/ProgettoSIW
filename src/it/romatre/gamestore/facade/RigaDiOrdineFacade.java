@@ -19,39 +19,45 @@ public class RigaDiOrdineFacade {
 	private EntityManager em;
 
 	private RigaDiOrdine rdo; 
-	
+
 	public void updateRigaDiOrdine(RigaDiOrdine riga) {
-        em.merge(riga);
+		em.merge(riga);
 	}
-	
-    private void deleteRigaDiOrdine(RigaDiOrdine riga) {
-        em.remove(riga);
-    }
+
+	private void deleteRigaDiOrdine(RigaDiOrdine riga) {
+		em.remove(riga);
+	}
 
 	public void deleteRigaDiOrdine(Long id) {
-        RigaDiOrdine riga = em.find(RigaDiOrdine.class, id);
-        deleteRigaDiOrdine(riga);
+		RigaDiOrdine riga = em.find(RigaDiOrdine.class, id);
+		deleteRigaDiOrdine(riga);
 	}
 
 	public Integer presentiInMagazzino(RigaDiOrdine rdo) {
-		Long id = this.rdo.getDescrizioneProdotto().getId();
-		int quantita = 0;
-		
-		Query q = em.createQuery("COUNT * FROM prodotto p WHERE +"
-				+ " descrizione_id = '" + id + "'");
-		quantita = (int) q.getSingleResult();
-		return quantita;
+		Long id = rdo.getDescrizioneProdotto().getId();
+		System.out.println("L'ID della descrizione prodotto  é :" + id);
+
+
+		Query q = em.createQuery("SELECT COUNT (p.codiceSeriale) FROM prodotto p WHERE"
+				+ " p.descrizione.id =" + id);
+		Integer count = ( (Long) q.getSingleResult() ).intValue();
+		return count;
 	}
 
-	public void rimuoviProdotto(Integer quantita) {
-		String id = this.rdo.getDescrizioneProdotto().getId().toString();
-		for (int i=0; i<quantita; i++) {
-		
-			Query q = em.createQuery("DELETE FROM prodotto p WHERE ctid IN  +"
-					+ "( SELECT ctid FROM prodotto + "
-					+ "   WHERE descrizione_id = '" + id + "' LIMIT 1)");
+	public void rimuoviProdotto(RigaDiOrdine rdo) {
+		Long id = rdo.getDescrizioneProdotto().getId();
+		for (int i=0; i<rdo.getQuantita(); i++) {	
+
+
+			em.createNativeQuery("DELETE FROM prodotto "
+					+ "WHERE codiceSeriale "
+					+ "IN ( SELECT codiceSeriale "
+					+ "FROM prodotto  "
+					+ "WHERE descrizione_id= 1 "
+					+ "LIMIT 1)").executeUpdate();
+
 		}
-		
+
 	}
 
 }

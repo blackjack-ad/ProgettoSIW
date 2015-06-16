@@ -123,16 +123,4 @@ public class RigaDiOrdineController {
 		this.rigaDiOrdineFacade = rigaDiOrdineFacade;
 	}
 
-	public boolean presentiInMagazzino(RigaDiOrdine rdo) {
-		System.out.println(rdo + "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
-		if (rigaDiOrdineFacade.presentiInMagazzino(rdo)>this.quantita) {
-			return true;
-		}
-		return false;
-	}
-	
-	public void evadiProdotti(RigaDiOrdine rdo) {
-		rigaDiOrdineFacade.rimuoviProdotto(this.quantita);
-	}
-
 }

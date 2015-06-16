@@ -195,38 +195,35 @@ public class OrdineController {
 
 	public String evadiOrdine(){
 		Ordine o = ordineFacade.getOrdine(id);
-
+		
+		System.out.println(o != null);
 		if (ordineFacade.evasionePossibile(o)){
-			System.out.println( "XXXXXXXXXXX EVASO XXXXXXXXXXX");
 			o.setStato("evaso");
 			o.getDataEvasione();
 			ordineFacade.updateOrdine(o);
 		}
 		else {
 			o.setStato("sospeso");
-			System.out.println( "XXXXXXXXXXXX SOSPESO XXXXXXXXXXX");
 			ordineFacade.updateOrdine(o);
 		}
-		refresh();
-		return "";
+//		refresh();
+		return "ordiniDaEvadere";
 	}
 
 	public String evadiOrdine(Long id){
 		Ordine o = ordineFacade.getOrdine(id);
 
 		if (ordineFacade.evasionePossibile(o)){
-			System.out.println( "XXXXXXXXXXX EVASO XXXXXXXXXXX");
 			o.setStato("evaso");
 			o.getDataEvasione();
 			ordineFacade.updateOrdine(o);
 		}
 		else {
 			o.setStato("sospeso");
-			System.out.println( "XXXXXXXXXXXX SOSPESO XXXXXXXXXXX");
 			ordineFacade.updateOrdine(o);
 		}
-		refresh();
-		return "";
+//		refresh();
+		return "ordiniDaEvadere";
 	}
 
 	public void refresh(){

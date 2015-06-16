@@ -36,7 +36,7 @@ public class RigaDiOrdine {
 		this.descrizioneProdotto = descrizioneProdotto;
 	}
 
-	public long getQuantita() {
+	public Integer getQuantita() {
 		return quantita;
 	}
 
