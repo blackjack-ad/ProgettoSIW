@@ -46,7 +46,11 @@
 				value="Inserisci prodotto in magazzino"></h:commandButton>
 		</h:form>
 
-		<button type="button" class="btn btn-primary">Evadi Ordine</button>
+		<h:form>
+			<h:commandButton action="#{ordineController.listOrdiniDaEvadere}"
+				value="Evadi Ordine"></h:commandButton>
+		</h:form>
+
 	</f:view>
 </body>
 </html>

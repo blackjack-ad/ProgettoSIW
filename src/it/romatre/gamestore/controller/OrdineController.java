@@ -22,10 +22,10 @@ public class OrdineController {
 
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
-	
+
 	@ManagedProperty(value = "#{loginController}")
 	private LoginController loginController; 
-	
+
 	@EJB
 	private OrdineFacade ordineFacade;
 
@@ -51,6 +51,11 @@ public class OrdineController {
 	public String listOrdini() {
 		this.ordini = ordineFacade.getAllOrdini();
 		return "ordini";
+	}
+
+	public String listOrdiniDaEvadere() {
+		this.ordini = ordineFacade.getAllOrdiniDaEvadereOSospesi();
+		return "ordiniDaEvadere";
 	}
 
 	public String listOrdiniUtente(){
@@ -163,7 +168,7 @@ public class OrdineController {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+
 	public String chiudiOrdine(){
 		Ordine o = ordineFacade.getOrdine(id);
 		o.setStato("chiuso");
@@ -171,7 +176,7 @@ public class OrdineController {
 		refresh();
 		return "";
 	}
-	
+
 	public String chiudiOrdine(Long id){
 		Ordine o = ordineFacade.getOrdine(id);
 		o.setStato("chiuso");
@@ -187,16 +192,52 @@ public class OrdineController {
 	public void setLoginController(LoginController loginController) {
 		this.loginController = loginController;
 	}
-	
-	public void refresh(){
-	    FacesContext facesContext = FacesContext.getCurrentInstance();
-	      String refreshpage = facesContext.getViewRoot().getViewId();
-	 ViewHandler  viewHandler =
-	facesContext.getApplication().getViewHandler();
-	      UIViewRoot viewroot =  viewHandler.createView( facesContext, refreshpage);
-	viewroot.setViewId(refreshpage);
-	facesContext.setViewRoot(viewroot);
+
+	public String evadiOrdine(){
+		Ordine o = ordineFacade.getOrdine(id);
+
+		if (ordineFacade.evasionePossibile(o)){
+			System.out.println( "XXXXXXXXXXX EVASO XXXXXXXXXXX");
+			o.setStato("evaso");
+			o.getDataEvasione();
+			ordineFacade.updateOrdine(o);
+		}
+		else {
+			o.setStato("sospeso");
+			System.out.println( "XXXXXXXXXXXX SOSPESO XXXXXXXXXXX");
+			ordineFacade.updateOrdine(o);
+		}
+		refresh();
+		return "";
 	}
-	
+
+	public String evadiOrdine(Long id){
+		Ordine o = ordineFacade.getOrdine(id);
+
+		if (ordineFacade.evasionePossibile(o)){
+			System.out.println( "XXXXXXXXXXX EVASO XXXXXXXXXXX");
+			o.setStato("evaso");
+			o.getDataEvasione();
+			ordineFacade.updateOrdine(o);
+		}
+		else {
+			o.setStato("sospeso");
+			System.out.println( "XXXXXXXXXXXX SOSPESO XXXXXXXXXXX");
+			ordineFacade.updateOrdine(o);
+		}
+		refresh();
+		return "";
+	}
+
+	public void refresh(){
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		String refreshpage = facesContext.getViewRoot().getViewId();
+		ViewHandler  viewHandler =
+				facesContext.getApplication().getViewHandler();
+		UIViewRoot viewroot =  viewHandler.createView( facesContext, refreshpage);
+		viewroot.setViewId(refreshpage);
+		facesContext.setViewRoot(viewroot);
+	}
+
 
 }

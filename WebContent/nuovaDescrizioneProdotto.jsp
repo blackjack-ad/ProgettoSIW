@@ -40,7 +40,7 @@
 	<f:view>
 
 		<h:form>
-		 	<h1>Inserisci i dati del prodotto da inserire nel catalogo</h1>
+			<h1>Inserisci i dati del prodotto da inserire nel catalogo</h1>
 			<div>
 				Nome:
 				<h:inputText value="#{descrizioneProdottoController2.nome}" />
@@ -55,10 +55,11 @@
 			</div>
 
 			<div>
-				<input type='file' id="imgInp" /> <img id="blah" src="#"
-					alt="your image" />
-				
-				<script type="text/javascript">
+				<h:form>
+					<input type='file' id="imgInp" />
+					<img id="blah" src="#" alt="your image" />
+					<h:commandButton action="#{descrizioneProdottoController.immagine}"></h:commandButton>
+					<script type="text/javascript">
 					function readURL(input) {
 						if (input.files && input.files[0]) {
 							var reader = new FileReader();
@@ -71,10 +72,9 @@
 					
 						}
 					}
-					$('#imgInp').change(function() {
-						readURL(this);
-					});
+					$('#imgInp').change( function(){ readURL(this);} );
 				</script>
+				</h:form>
 			</div>
 			<div>
 				<h:commandButton value="Inserisci"

@@ -1,12 +1,17 @@
 package it.romatre.gamestore.facade;
 
+import it.romatre.gamestore.controller.DescrizioneProdottoController;
+import it.romatre.gamestore.controller.RigaDiOrdineController;
 import it.romatre.gamestore.dominio.DescrizioneProdotto;
 import it.romatre.gamestore.dominio.Ordine;
+import it.romatre.gamestore.dominio.RigaDiOrdine;
 import it.romatre.gamestore.dominio.Utente;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateless;
+import javax.faces.bean.ManagedProperty;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
@@ -17,6 +22,9 @@ import javax.persistence.criteria.CriteriaQuery;
 public class OrdineFacade {
 
 
+	@ManagedProperty(value="#{rigaDiOrdineController}")
+	private RigaDiOrdineController rigaDiOrdineController;
+	
 	@PersistenceContext(unitName = "unit-ordine")
 	private EntityManager em;
 
@@ -44,6 +52,13 @@ public class OrdineFacade {
 		List<Ordine> ordini = em.createQuery(cq).getResultList();
 		return ordini;
 	}
+	
+	public List<Ordine> getAllOrdiniDaEvadereOSospesi() {
+		Query q = 
+				em.createQuery("SELECT o FROM ordine o WHERE o.stato = 'chiuso' OR o.stato = 'sospeso'");
+		List<Ordine> ordini = q.getResultList();
+		return ordini;
+	}
 
 	public void updateOrdine(Ordine ordine) {
 		em.merge(ordine);
@@ -65,6 +80,27 @@ public class OrdineFacade {
 						Ordine.class);
 		List<Ordine> ordini = q.getResultList();
 		return ordini;
+	}
+	
+	public boolean evasionePossibile(Ordine ordine) {
+		List<RigaDiOrdine> righeDiOrdine = new ArrayList<RigaDiOrdine>(ordine.getRigheDiOrdine());
+	
+		for (RigaDiOrdine rdo : righeDiOrdine) {
+			System.out.println(rdo + "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL");
+			if (!this.rigaDiOrdineController.presentiInMagazzino(rdo)){
+				System.out.println( "LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLXXX");
+				return false;
+			}
+		}
+		
+		
+		
+		for (RigaDiOrdine rdo : righeDiOrdine) {
+			this.rigaDiOrdineController.evadiProdotti(rdo);
+				
+		}
+		
+		return true;
 	}
 
 }

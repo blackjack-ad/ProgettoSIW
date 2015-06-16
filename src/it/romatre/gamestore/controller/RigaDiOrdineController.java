@@ -18,20 +18,25 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean(name="rigaDiOrdineController")
 public class RigaDiOrdineController { 
+
 	@ManagedProperty(value="#{descrizioneProdottoController}")
 	private DescrizioneProdottoController descrizioneProdottoController;
+
 	@ManagedProperty(value="#{ordineController}")
 	private OrdineController ordineController;
+
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
+
 	@EJB
 	private DescrizioneProdottoFacade descrizioneProdottoFacade; 
+
 	@EJB
 	private RigaDiOrdineFacade rigaDiOrdineFacade; 
 	private Integer quantita;  
 	private List<RigaDiOrdine> righeTemporanee = new ArrayList<RigaDiOrdine>();
 	private boolean started = false;
-	
+
 	public String creaRigaDiOrdine(){
 		Long idParam = descrizioneProdottoController.getId();
 		DescrizioneProdotto dp = descrizioneProdottoFacade.getDescrizioneProdotto(idParam);
@@ -82,12 +87,12 @@ public class RigaDiOrdineController {
 	public void setOrdineController(OrdineController ordineController) {
 		this.ordineController = ordineController;
 	}
-	
+
 	public String eliminaRiga(){
 		rigaDiOrdineFacade.deleteRigaDiOrdine(id);
 		return "ordine";
 	}
-	
+
 	public String eliminaRiga(Long id){
 		rigaDiOrdineFacade.deleteRigaDiOrdine(id);
 		return "ordine";
@@ -117,5 +122,17 @@ public class RigaDiOrdineController {
 	public void setRigaDiOrdineFacade(RigaDiOrdineFacade rigaDiOrdineFacade) {
 		this.rigaDiOrdineFacade = rigaDiOrdineFacade;
 	}
+
+	public boolean presentiInMagazzino(RigaDiOrdine rdo) {
+		System.out.println(rdo + "RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR");
+		if (rigaDiOrdineFacade.presentiInMagazzino(rdo)>this.quantita) {
+			return true;
+		}
+		return false;
+	}
 	
+	public void evadiProdotti(RigaDiOrdine rdo) {
+		rigaDiOrdineFacade.rimuoviProdotto(this.quantita);
+	}
+
 }

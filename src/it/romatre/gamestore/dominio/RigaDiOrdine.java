@@ -11,25 +11,25 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class RigaDiOrdine {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
+
 	@Column(nullable = false)
 	private Integer quantita;
-	
+
 	@Column(nullable = false)
 	@OneToOne(fetch=FetchType.EAGER)
 	private DescrizioneProdotto descrizioneProdotto;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Ordine ordine;
-	
+
 	public RigaDiOrdine(){
-		
+
 	}
-	
+
 	public RigaDiOrdine(Integer quantita, DescrizioneProdotto descrizioneProdotto) {
 		super();
 		this.quantita = quantita;
@@ -67,6 +67,5 @@ public class RigaDiOrdine {
 	public void setOrdine(Ordine ordine) {
 		this.ordine = ordine;
 	}
-	
-	
+
 }
