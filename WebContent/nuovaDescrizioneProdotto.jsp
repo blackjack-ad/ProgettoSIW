@@ -53,29 +53,6 @@
 				Descrizione:
 				<h:inputText value="#{descrizioneProdottoController2.descrizione}" />
 			</div>
-
-			<div>
-				<h:form>
-					<input type='file' id="imgInp" />
-					<img id="blah" src="#" alt="your image" />
-					<h:commandButton action="#{descrizioneProdottoController.immagine}"></h:commandButton>
-					<script type="text/javascript">
-					function readURL(input) {
-						if (input.files && input.files[0]) {
-							var reader = new FileReader();
-
-							reader.onload = function(e) {
-								$('#blah').attr('src', e.target.result);
-								
-							}
-							reader.readAsDataURL(input.files[0]);
-					
-						}
-					}
-					$('#imgInp').change( function(){ readURL(this);} );
-				</script>
-				</h:form>
-			</div>
 			<div>
 				<h:commandButton value="Inserisci"
 					action="#{descrizioneProdottoController2.createDescrizioneProdotto}" />
