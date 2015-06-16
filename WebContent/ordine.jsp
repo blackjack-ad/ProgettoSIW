@@ -41,10 +41,10 @@
 		<%@ include file="standard-header.jsp"%>
 		<h1>Ordine</h1>
 
-		<table>
+		<table class="table table-hover">
 			<tr>
-				<th>NomeProdotto</th>
-				<th>Quantita</th>
+				<th>Nome del prodotto</th>
+				<th>Quantita'</th>
 			</tr>
 			<c:forEach var="rigaDiOrdine"
 				items="#{ordineController.ordine.righeDiOrdine}">
@@ -60,7 +60,7 @@
 					<td>${rigaDiOrdine.quantita}</td>
 					<c:if test="${ordineController.ordine.stato eq 'aperto'}">
 						<td><h:form>
-								<h:commandButton action="#{rigaDiOrdineController.eliminaRiga}"
+								<h:commandButton styleClass="btn btn-primary" action="#{rigaDiOrdineController.eliminaRiga}"
 									value="Elimina">
 									<f:param name="id" value="#{rigaDiOrdine.id}" />
 								</h:commandButton>
@@ -71,7 +71,7 @@
 		</table>
 			<c:if test="${ordineController.ordine.stato eq null}">
 			<td><h:form>
-					<h:commandButton
+					<h:commandButton styleClass="btn btn-primary"
 						action="#{descrizioneProdottoController2.listDescrizioneProdotti}"
 						value="Aggiungi altri prodotti">
 						<f:param name="id" value="#{ordineController.ordine.id}" />
@@ -80,27 +80,29 @@
 		</c:if>
 		<c:if test="${ordineController.ordine.stato eq null}">
 			<td><h:form>
-					<h:commandButton
+					<h:commandButton styleClass="btn btn-primary"
 						action="#{ordineController.persistiOrdine}"
 						value="Conferma Ordine">
 						<f:param name="id" value="#{ordineController.ordine.id}" />
 					</h:commandButton>
 				</h:form></td>
 		</c:if>
-		
+		<p>
+		<p>
 		<c:if test="${ordineController.ordine.stato eq 'aperto'}">
 			<td><h:form>
-					<h:commandButton
+					<h:commandButton styleClass="btn btn-primary"
 						action="#{descrizioneProdottoController2.listDescrizioneProdotti2}"
 						value="Aggiungi altri prodotti">
 						<f:param name="id" value="#{ordineController.ordine.id}" />
 					</h:commandButton>
 				</h:form></td>
 		</c:if>
-		
+		<p>
+		<p>
 		<c:if test="${ordineController.ordine.stato eq 'aperto'}">
 			<td><h:form>
-					<h:commandButton
+					<h:commandButton styleClass="btn btn-primary"
 						action="#{ordineController.chiudiOrdine}"
 						value="ChiudiOrdine">
 						<f:param name="id" value="#{ordineController.ordine.id}" />
@@ -109,10 +111,10 @@
 		</c:if>
 		
 		<c:if test="${ordineController.ordine.stato eq 'chiuso'}">
-			<td>In attesa di essere evaso</td>
+			<h4>Stato dell'ordine: In attesa di essere evaso</h4>
 		</c:if>
 		<c:if test="${ordineController.ordine.stato eq 'evaso'}">
-			<td>In spedizione</td>
+			<h4>Stato dell'ordine: In spedizione</h4>
 		</c:if>
 	</f:view>
 </body>
