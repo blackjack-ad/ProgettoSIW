@@ -8,14 +8,14 @@ import javax.ejb.EJB;
 @EJB
 public class Azienda {
 	private Map<Long, DescrizioneProdotto> catalogo;
-//	private Map<Long, Prodotto> magazzino;
+	private Map<Long, Prodotto> magazzino;
 	private Map<Long, Utente> anagraficaClienti;
 	private Map<Long, Ordine> ordini;
 	private long descrizioneId = 0L;
 	
 	public Azienda() {
 		this.catalogo = new HashMap<Long, DescrizioneProdotto>();
-//		this.magazzino = new HashMap<Long, Prodotto>();
+		this.magazzino = new HashMap<Long, Prodotto>();
 		this.anagraficaClienti = new HashMap<Long, Utente>();
 		this.ordini = new HashMap<Long, Ordine>();
 	}
@@ -35,14 +35,14 @@ public class Azienda {
 	}
 	
 
-//	
-//	public Map<Long, Prodotto> getMagazzino() {
-//		return magazzino;
-//	}
-//
-//	public void setMagazzino(Map<Long, Prodotto> magazzino) {
-//		this.magazzino = magazzino;
-//	}
+	
+	public Map<Long, Prodotto> getMagazzino() {
+		return magazzino;
+	}
+
+	public void setMagazzino(Map<Long, Prodotto> magazzino) {
+		this.magazzino = magazzino;
+	}
 
 	public Map<Long, Utente> getAnagraficaClienti() {
 		return anagraficaClienti;

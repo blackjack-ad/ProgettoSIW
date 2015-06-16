@@ -4,8 +4,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -13,26 +18,31 @@ import javax.persistence.OneToMany;
 @Entity(name="ordine")
 public class Ordine {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+	
+	@Column(nullable = false)
 	private Date dataInizio;
+	@Column(nullable = true)
 	private Date dataChiusura;
+	@Column(nullable = true)
 	private Date dataEvasione;
 	
-	//TODO inserire persistenza delle righe
-//	private List<RigaDiOrdine> righeDiOrdine;
+	@OneToMany(mappedBy="ordine", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
+	private List<RigaDiOrdine> righeDiOrdine;
 	
 	private String stato;
 	
-	@ManyToOne(targetEntity=Utente.class, fetch = FetchType.LAZY)
-	@JoinColumn(name="utenteId")
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Utente utente;
 
 	public Ordine() {
-		this.stato = "aperto";
+		this.stato = null;
 		this.dataInizio = new Date();
 		this.dataChiusura = null;
 		this.dataEvasione = null;
-//		this.righeDiOrdine = new ArrayList<RigaDiOrdine>();
+		this.righeDiOrdine = new ArrayList<RigaDiOrdine>();
 	}
 
 	public Date getDataInizio() {
@@ -59,22 +69,22 @@ public class Ordine {
 		this.dataEvasione = dataEvasione;
 	}
 
-//	public List<RigaDiOrdine> getRigheDiOrdine() {
-//		return righeDiOrdine;
-//	}
-//
-//	public void setRigheDiOrdine(List<RigaDiOrdine> righeDiOrdine) {
-//		this.righeDiOrdine = righeDiOrdine;
-//	}
-//	
-//	public void addRigaDiOrdine(RigaDiOrdine r){
-//		righeDiOrdine.add(r);
-//	}
-//	
-//	@Override
-//	public String toString(){
-//		return "Ordine in stato " + stato + " contenente " + righeDiOrdine.size() + " righe";
-//	}
+	public List<RigaDiOrdine> getRigheDiOrdine() {
+		return righeDiOrdine;
+	}
+
+	public void setRigheDiOrdine(List<RigaDiOrdine> righeDiOrdine) {
+		this.righeDiOrdine = righeDiOrdine;
+	}
+	
+	public void addRigaDiOrdine(RigaDiOrdine r){
+		righeDiOrdine.add(r);
+	}
+	
+	@Override
+	public String toString(){
+		return "Ordine in stato " + stato + " contenente " + righeDiOrdine.size() + " righe";
+	}
 	
 	public String getStato() {
 		return stato;
@@ -90,6 +100,14 @@ public class Ordine {
 
 	public void setUtente(Utente utente) {
 		this.utente = utente;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
 }

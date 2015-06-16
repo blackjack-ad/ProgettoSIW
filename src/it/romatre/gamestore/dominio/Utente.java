@@ -1,10 +1,8 @@
 package it.romatre.gamestore.dominio;
 
-import java.util.Calendar;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,8 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+
 
 @Entity(name="utente")
 public class Utente {
@@ -34,20 +31,18 @@ public class Utente {
 	private String email;
 	@Column(nullable = false)
 	private String password;
-	
-	@Column(name = "DATE_FIELD") 
-	@Temporal(TemporalType.DATE) 
-	private Date dataNascita;
-	
+
+	private String dataNascita;
+
 	@OneToOne (cascade= {CascadeType.PERSIST, CascadeType.REMOVE}, fetch = FetchType.LAZY)
 	private Indirizzo indirizzo;
 
 	private Ordine ordineCorrente;
 
-	@OneToMany (targetEntity=Ordine.class, fetch = FetchType.LAZY, mappedBy="utente")	//da verificare ed aggiornare la classe Ordine
-	private Map<Long, Ordine> ordini;
+	@OneToMany(mappedBy="utente")
+	private List<Ordine> ordini;
 
-	public Utente(String nome, String cognome, String email, String password, String telefono, Indirizzo indirizzo,Date dataNascita ) {
+	public Utente(String nome, String cognome, String email, String password, String telefono, Indirizzo indirizzo,String dataNascita ) {
 		super();
 		this.nome = nome;
 		this.cognome = cognome;
@@ -56,7 +51,7 @@ public class Utente {
 		this.password = password;
 		this.dataNascita = dataNascita;
 		this.indirizzo = indirizzo;
-		this.ordini = new HashMap<Long, Ordine>();
+		this.ordini = new ArrayList<Ordine>();
 	}
 
 	public String getNome() {
@@ -107,11 +102,11 @@ public class Utente {
 		this.ordineCorrente = ordineCorrente;
 	}
 
-	public Map<Long, Ordine> getOrdini() {
+	public List<Ordine> getOrdini() {
 		return ordini;
 	}
 
-	public void setOrdini(Map<Long, Ordine> ordini) {
+	public void setOrdini(List<Ordine> ordini) {
 		this.ordini = ordini;
 	}
 
@@ -122,13 +117,29 @@ public class Utente {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
+
 	public String printDataNascita(){
 		return this.dataNascita.toString();
 	}
-	
+
 	public String printIndirizzo(){
 		return this.indirizzo.getStato() + " " + this.indirizzo.getCitta() + " " + this.indirizzo.getCitta();
+	}
+
+	public String getDataNascita() {
+		return dataNascita;
+	}
+
+	public void setDataNascita(String dataNascita) {
+		this.dataNascita = dataNascita;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }
