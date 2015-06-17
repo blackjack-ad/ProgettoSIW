@@ -22,8 +22,9 @@
 		<%@ include file="standard-header.jsp"%>
 		<h:form>
 			<h3>Effettua il login:</h3>
+			<h:panelGrid columns="3">
 			<div>
-				Email:
+				Email
 				<h:inputText value="#{loginController.email}" required="true"
 					requiredMessage=" Devi inserire la tua emial per effettuare il login"
 					id="email" />
@@ -31,14 +32,15 @@
 			</div>
 			<p>
 			<div>
-				Password:
+				Password
 				<h:inputSecret value="#{loginController.password}" required="true"
 					requiredMessage=" Devi inserire la tua password" id="password" />
 				<h:message for="password" />
 			</div>
+			</h:panelGrid>
 			<p>
 			<div>
-				<h:commandButton value="Accedi"
+				<h:commandButton styleClass="btn btn-primary" value="Accedi"
 					action="#{loginController.verifyPasswordUtente}" />
 			</div>
 		</h:form>

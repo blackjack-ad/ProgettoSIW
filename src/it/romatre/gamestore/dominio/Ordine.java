@@ -29,12 +29,12 @@ public class Ordine {
 	@Column(nullable = true)
 	private Date dataEvasione;
 	
-	@OneToMany(mappedBy="ordine", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="ordine", cascade = {CascadeType.PERSIST, CascadeType.REMOVE,CascadeType.MERGE,CascadeType.REFRESH}, fetch=FetchType.EAGER)
 	private List<RigaDiOrdine> righeDiOrdine;
 	
 	private String stato;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Utente utente;
 
 	public Ordine() {
@@ -78,7 +78,22 @@ public class Ordine {
 	}
 	
 	public void addRigaDiOrdine(RigaDiOrdine r){
-		righeDiOrdine.add(r);
+		DescrizioneProdotto descTemp = r.getDescrizioneProdotto(); 
+		boolean isANewDescription = true; 
+		RigaDiOrdine rdoTarget = null;
+		for(RigaDiOrdine rdo : righeDiOrdine){
+			if(rdo.getDescrizioneProdotto().equals(descTemp)){
+				isANewDescription = false;
+				rdoTarget = rdo; 
+			}
+		}
+		if(isANewDescription){
+			righeDiOrdine.add(r);
+		}
+		else{
+			rdoTarget.setQuantita(rdoTarget.getQuantita()+r.getQuantita());
+		}
+			
 	}
 	
 	@Override

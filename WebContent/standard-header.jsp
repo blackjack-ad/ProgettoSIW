@@ -24,8 +24,9 @@
 							<!-- Collect the nav links, forms, and other content for toggling -->
 							<div class="collapse navbar-collapse"
 								id="bs-example-navbar-collapse-1">
-								<ul class="nav navbar-nav">
-									<li><a href="adminPage.jsp">Accedi come amministratore</a></li>
+								<ul class="nav navbar-nav"><c:if test="${not loginController.loggedIn}">
+										<li><a href="adminPage.jsp">Accedi come amministratore</a></li>
+									</c:if>
 									<li><a href="registrazioneUtente.jsp">Registrati</a></li>
 									<c:if test="${not loginController.loggedIn}">
 										<li><a href="login.jsp">Login</a></li>
@@ -37,9 +38,16 @@
 
 								<c:if test="${loginController.loggedIn}">
 									<h4 class="navbar-text navbar-right">
-										Benvenuto <strong><a href="paginaUtente.jsp"
+										Benvenuto <strong><a href="faces/paginaUtente.jsp"
 											style="color: #231A24">${loginController.utenteCorrente.nome}
 												${loginController.utenteCorrente.cognome}</a></strong>&nbsp
+									</h4>
+								</c:if>
+
+								<c:if test="${loginController.creatingOrder}">
+									<h4 class="navbar-text navbar-right">
+										<strong><a href="ordine.jsp" style="color: #231A24">Ordine<span
+												class="badge">${ordineController.num}</span></a></strong>&nbsp
 									</h4>
 								</c:if>
 							</div>

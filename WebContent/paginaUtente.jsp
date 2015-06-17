@@ -41,7 +41,7 @@
 		<p>
 		<h5>
 			<h:form>
-				<h:commandButton action="#{ordineController.listOrdiniUtente}"
+				<h:commandButton styleClass="btn btn-primary" action="#{ordineController.listOrdiniUtente}"
 					value="I miei Ordini">
 				</h:commandButton>
 			</h:form>

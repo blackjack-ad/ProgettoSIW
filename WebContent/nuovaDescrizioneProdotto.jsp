@@ -38,51 +38,44 @@
 <body>
 
 	<f:view>
+		<%@ include file="standard-header.jsp"%>
 
 		<h:form>
+	
 			<h1>Inserisci i dati del prodotto da inserire nel catalogo</h1>
+			<p>
+			<p>
+				<h:panelGrid columns="2">
 			<div>
-				Nome:
+				Nome
 				<h:inputText value="#{descrizioneProdottoController2.nome}" />
 			</div>
+			<p>
 			<div>
-				Prezzo:
+				Prezzo
 				<h:inputText value="#{descrizioneProdottoController2.prezzo}" />
 			</div>
+			<p>
 			<div>
-				Descrizione:
+				Descrizione
 				<h:inputText value="#{descrizioneProdottoController2.descrizione}" />
 			</div>
-
+			</h:panelGrid>
+			<p>
 			<div>
-				<h:form>
-					<input type='file' id="imgInp" />
-					<img id="blah" src="#" alt="your image" />
-					<h:commandButton action="#{descrizioneProdottoController.immagine}"></h:commandButton>
-					<script type="text/javascript">
-					function readURL(input) {
-						if (input.files && input.files[0]) {
-							var reader = new FileReader();
-
-							reader.onload = function(e) {
-								$('#blah').attr('src', e.target.result);
-								
-							}
-							reader.readAsDataURL(input.files[0]);
-					
-						}
-					}
-					$('#imgInp').change( function(){ readURL(this);} );
-				</script>
-				</h:form>
-			</div>
-			<div>
-				<h:commandButton value="Inserisci"
+				<h:commandButton styleClass="btn btn-primary" value="Inserisci"
 					action="#{descrizioneProdottoController2.createDescrizioneProdotto}" />
 			</div>
-			<h:commandLink
-				action="#{descrizioneProdottoController2.listDescrizioneProdotti}"
-				value="List all Products" />
+			<p>
+			<p>
+			<p>
+			<p>
+			<h4>
+				Torna ai prodotti in
+				<h:commandLink
+					action="#{descrizioneProdottoController2.listDescrizioneProdotti}"
+					value="catalogo" />
+			</h4>
 		</h:form>
 
 	</f:view>

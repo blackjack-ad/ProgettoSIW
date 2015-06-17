@@ -4,6 +4,12 @@ import it.romatre.gamestore.dominio.Ordine;
 import it.romatre.gamestore.dominio.RigaDiOrdine;
 import it.romatre.gamestore.dominio.Utente;
 import it.romatre.gamestore.facade.OrdineFacade;
+import it.romatre.gamestore.facade.RigaDiOrdineFacade;
+import it.romatre.gamestore.facade.UtenteFacade;
+import it.romatre.gamestore.dominio.Ordine;
+import it.romatre.gamestore.dominio.RigaDiOrdine;
+import it.romatre.gamestore.dominio.Utente;
+import it.romatre.gamestore.facade.OrdineFacade;
 import it.romatre.gamestore.facade.UtenteFacade;
 
 import java.util.Date;
@@ -28,13 +34,18 @@ public class OrdineController {
 
 	@EJB
 	private OrdineFacade ordineFacade;
+	
+	@EJB
+	private RigaDiOrdineFacade rigaDiOrdineFacade;
 
 	private Date dataInizio;
 	private Date dataFine;
 	private Date dataEvasione;
 	private Utente utente;
 	private Ordine ordine;
+	private Integer num;
 	private List<Ordine> ordini;
+
 
 	//	public String creaOrdine() {
 	//		FacesContext fc = FacesContext.getCurrentInstance();
@@ -112,10 +123,18 @@ public class OrdineController {
 	}
 
 	public Ordine getOrdine() {
-		return ordine;
+		if(ordine==null){
+			FacesContext fc = FacesContext.getCurrentInstance();
+			ordine = (Ordine)fc.getExternalContext().getSessionMap().get("order");
+			return ordine;
+		}
+		else
+			return ordine;
 	}
 
 	public void setOrdine(Ordine ordine) {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		fc.getExternalContext().getSessionMap().put("order", ordine);
 		this.ordine = ordine;
 	}
 
@@ -137,6 +156,9 @@ public class OrdineController {
 			loginController.setCreatingOrder(true);
 		}
 		r.setOrdine(ordine);
+		if(ordine.getId()!=null){
+			rigaDiOrdineFacade.createRigaDiOrdine(r);
+		}
 		ordine.addRigaDiOrdine(r);
 		fc.getExternalContext().getSessionMap().put("order",ordine);
 	}
@@ -148,7 +170,47 @@ public class OrdineController {
 		ordineFacade.persistiOrdine(ordine);
 		fc.getExternalContext().getSessionMap().remove("order");
 		loginController.setCreatingOrder(false);
-		return "success_order";
+		return "ordine";
+	}
+	
+	public String eliminaRiga(){
+		FacesContext fc = FacesContext.getCurrentInstance();
+		ordine = (Ordine)fc.getExternalContext().getSessionMap().get("order");
+		System.out.println("descId =" + id);
+		
+		for(int i= 0 ; i<ordine.getRigheDiOrdine().size(); i++){
+			
+			RigaDiOrdine rdo = ordine.getRigheDiOrdine().get(i);
+			
+			System.out.println(rdo.getDescrizioneProdotto().getId());
+			Long temp = rdo.getDescrizioneProdotto().getId();
+			if(temp.compareTo(id)==0){
+				ordine.getRigheDiOrdine().remove(i);
+			}
+		}
+		fc.getExternalContext().getSessionMap().put("order",ordine);
+		setOrdine(ordine);
+		return "ordine";
+	}
+	
+	public String eliminaRiga(Long descId){
+		FacesContext fc = FacesContext.getCurrentInstance();
+		ordine = (Ordine)fc.getExternalContext().getSessionMap().get("order");
+		System.out.println("descId =" + descId);
+		
+		for(int i= 0 ; i<ordine.getRigheDiOrdine().size(); i++){
+			
+			RigaDiOrdine rdo = ordine.getRigheDiOrdine().get(i);
+			
+			System.out.println(rdo.getDescrizioneProdotto().getId());
+			Long temp = rdo.getDescrizioneProdotto().getId();
+			if(temp.compareTo(descId)==0){
+				ordine.getRigheDiOrdine().remove(i);
+			}
+		}
+		fc.getExternalContext().getSessionMap().put("order",ordine);
+		setOrdine(ordine);
+		return "ordine";
 	}
 
 	public String findOrdine() {
@@ -158,6 +220,11 @@ public class OrdineController {
 
 	public String findOrdine(Long id) {
 		this.ordine = ordineFacade.getOrdine(id);
+		return "ordine";
+	}
+	
+	public String newFindOrdine(){
+		getOrdine();
 		return "ordine";
 	}
 
@@ -172,17 +239,17 @@ public class OrdineController {
 	public String chiudiOrdine(){
 		Ordine o = ordineFacade.getOrdine(id);
 		o.setStato("chiuso");
+		o.setDataChiusura(new Date());
 		ordineFacade.updateOrdine(o);
-		refresh();
-		return "";
+		return listOrdiniUtente();
 	}
 
 	public String chiudiOrdine(Long id){
 		Ordine o = ordineFacade.getOrdine(id);
 		o.setStato("chiuso");
+		o.setDataChiusura(new Date());
 		ordineFacade.updateOrdine(o);
-		refresh();
-		return "";
+		return listOrdiniUtente();
 	}
 
 	public LoginController getLoginController() {
@@ -207,7 +274,7 @@ public class OrdineController {
 			ordineFacade.updateOrdine(o);
 		}
 //		refresh();
-		return "ordiniDaEvadere";
+		return listOrdiniDaEvadere();
 	}
 
 	public String evadiOrdine(Long id){
@@ -223,7 +290,7 @@ public class OrdineController {
 			ordineFacade.updateOrdine(o);
 		}
 //		refresh();
-		return "ordiniDaEvadere";
+		return listOrdiniDaEvadere();
 	}
 
 	public void refresh(){
@@ -236,5 +303,29 @@ public class OrdineController {
 		facesContext.setViewRoot(viewroot);
 	}
 
+	public void setOrdineX(Ordine ordine) {
+		FacesContext fc = FacesContext.getCurrentInstance();
+		ordine.setStato(null);
+		fc.getExternalContext().getSessionMap().put("order",ordine);
+		loginController.setCreatingOrder(true);
+	}
 
+	public Integer getNum() {
+		return ordineFacade.contaElementiOrdine(getOrdine());
+	}
+
+	public void setNum(Integer num) {
+		this.num = num;
+	}
+
+	public RigaDiOrdineFacade getRigaDiOrdineFacade() {
+		return rigaDiOrdineFacade;
+	}
+
+	public void setRigaDiOrdineFacade(RigaDiOrdineFacade rigaDiOrdineFacade) {
+		this.rigaDiOrdineFacade = rigaDiOrdineFacade;
+	}
+
+	
+	
 }

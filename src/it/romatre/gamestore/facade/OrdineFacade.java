@@ -22,14 +22,11 @@ import javax.persistence.criteria.CriteriaQuery;
 @Stateless
 public class OrdineFacade {
 	
-	@EJB
-	private RigaDiOrdineFacade rigaDiOrdineFacade;
-
-	@ManagedProperty(value="#{rigaDiOrdineController}")
-	private RigaDiOrdineController rigaDiOrdineController;
-	
 	@PersistenceContext(unitName = "unit-ordine")
 	private EntityManager em;
+	
+	@EJB
+	private RigaDiOrdineFacade rigaDiOrdineFacade;
 
 	public Ordine createOrdine(Utente u){
 		Ordine ordine = new Ordine();
@@ -39,10 +36,13 @@ public class OrdineFacade {
 	}
 
 	public Ordine persistiOrdine(Ordine o){
-		em.persist(o);
+		if(o.getId()==null)
+			em.persist(o);
+		else
+			em.merge(o);
 		return o;
 	}
-
+	
 	public Ordine getOrdine(Long id) {
 		Ordine ordine = em.find(Ordine.class, id);
 		return ordine;
@@ -111,4 +111,15 @@ public class OrdineFacade {
 		return false;
 	}
 
+	public Integer contaElementiOrdine(Ordine o) {
+		int cont = 0; 
+		List<DescrizioneProdotto> desc = new ArrayList<>();
+		for (RigaDiOrdine rdo : o.getRigheDiOrdine()){
+			if(desc.indexOf(rdo.getDescrizioneProdotto())==-1){
+				cont++;
+				desc.add(rdo.getDescrizioneProdotto());
+			}
+		}
+		return cont;
+	}
 }

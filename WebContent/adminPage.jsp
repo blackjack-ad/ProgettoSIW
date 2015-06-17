@@ -34,23 +34,29 @@
 	<f:view>
 		<%@ include file="standard-header.jsp"%>
 
+		<h2>Da qui puoi gestire l'intero negozio</h2>
+		<h4>Scegli una delle seguenti operazioni</h4>
+
 		<button type="button" class="btn btn-primary"
 			onclick="location.href='faces/nuovaDescrizioneProdotto.jsp'">Inserisci
 			prodotto nel catalogo</button>
-		<button type="button" class="btn btn-primary"
-			onclick="location.href='faces/nuovoFornitore.jsp'">Inserisci
-			un nuovo fornitore</button>
+		<p>
+		<p>
+			<button type="button" class="btn btn-primary"
+				onclick="location.href='faces/nuovoFornitore.jsp'">Inserisci
+				un nuovo fornitore</button>
 
-		<h:form>
-			<h:commandButton action="#{prodottoController.listFornitori}"
-				value="Inserisci prodotto in magazzino"></h:commandButton>
-		</h:form>
-
-		<h:form>
-			<h:commandButton action="#{ordineController.listOrdiniDaEvadere}"
-				value="Evadi Ordine"></h:commandButton>
-		</h:form>
-
+			<h:form>
+				<h:commandButton styleClass="btn btn-primary"
+					action="#{prodottoController.listFornitori}"
+					value="Inserisci prodotto in magazzino"></h:commandButton>
+			</h:form>
+		<p>
+			<h:form>
+				<h:commandButton styleClass="btn btn-primary"
+					action="#{ordineController.listOrdiniDaEvadere}"
+					value="Evadi Ordine"></h:commandButton>
+			</h:form>
 	</f:view>
 </body>
 </html>

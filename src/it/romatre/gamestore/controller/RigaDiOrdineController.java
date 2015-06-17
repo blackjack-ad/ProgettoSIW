@@ -18,21 +18,17 @@ import javax.faces.context.FacesContext;
 
 @ManagedBean(name="rigaDiOrdineController")
 public class RigaDiOrdineController { 
-
 	@ManagedProperty(value="#{descrizioneProdottoController}")
 	private DescrizioneProdottoController descrizioneProdottoController;
-
 	@ManagedProperty(value="#{ordineController}")
 	private OrdineController ordineController;
-
 	@ManagedProperty(value="#{param.id}")
 	private Long id;
-
 	@EJB
 	private DescrizioneProdottoFacade descrizioneProdottoFacade; 
-
 	@EJB
 	private RigaDiOrdineFacade rigaDiOrdineFacade; 
+	private Long ordId;
 	private Integer quantita;  
 	private List<RigaDiOrdine> righeTemporanee = new ArrayList<RigaDiOrdine>();
 	private boolean started = false;
@@ -89,13 +85,23 @@ public class RigaDiOrdineController {
 	}
 
 	public String eliminaRiga(){
+		RigaDiOrdine rdo = rigaDiOrdineFacade.getRigaDiOrdine(id);
+		Ordine o = rdo.getOrdine();
+		System.out.println(o==null);
 		rigaDiOrdineFacade.deleteRigaDiOrdine(id);
-		return "ordine";
+		return ordineController.findOrdine(o.getId());
 	}
 
 	public String eliminaRiga(Long id){
+		RigaDiOrdine rdo = rigaDiOrdineFacade.getRigaDiOrdine(id);
+		Ordine o = rdo.getOrdine();
+		System.out.println(o==null);
 		rigaDiOrdineFacade.deleteRigaDiOrdine(id);
-		return "ordine";
+		return ordineController.findOrdine(o.getId());
+	}
+	
+	public String eliminaRigaTemp(){
+		return "";
 	}
 
 	public Long getId() {
@@ -123,4 +129,11 @@ public class RigaDiOrdineController {
 		this.rigaDiOrdineFacade = rigaDiOrdineFacade;
 	}
 
+	public Long getOrdId() {
+		return ordId;
+	}
+
+	public void setOrdId(Long idOrdine) {
+		this.ordId = idOrdine;
+	}
 }

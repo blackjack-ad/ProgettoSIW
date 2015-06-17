@@ -50,10 +50,11 @@
 								<div class="collapse navbar-collapse"
 									id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav">
+										<c:if test="${not loginController.loggedIn}">
+											<li><a href="faces/adminPage.jsp">Accedi come
+													amministratore</a></li>
+										</c:if>
 
-
-										<li><a href="faces/adminPage.jsp">Accedi come
-												amministratore</a></li>
 
 										<li><a href="faces/registrazioneUtente.jsp">Registrati</a></li>
 										<c:if test="${not loginController.loggedIn}">
@@ -65,7 +66,7 @@
 									</ul>
 									<c:if test="${loginController.loggedIn}">
 										<h4 class="navbar-text navbar-right">
-											Benvenuto <strong><a href="paginaUtente.jsp"
+											Benvenuto <strong><a href="faces/paginaUtente.jsp"
 												style="color: #231A24">${loginController.utenteCorrente.nome}
 													${loginController.utenteCorrente.cognome}</a></strong>&nbsp
 										</h4>
@@ -112,6 +113,7 @@
 				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
 				<li data-target="#myCarousel" data-slide-to="1"></li>
 				<li data-target="#myCarousel" data-slide-to="2"></li>
+				<li data-target="#myCarousel" data-slide-to="3"></li>
 			</ol>
 
 			<!-- Wrapper for slides -->
@@ -128,6 +130,10 @@
 
 				<div class="item">
 					<img src="tab2.jpg" alt="Chania">
+				</div>
+				
+				<div class="item">
+					<img src="tab3.jpg" alt="Chania">
 				</div>
 
 			</div>

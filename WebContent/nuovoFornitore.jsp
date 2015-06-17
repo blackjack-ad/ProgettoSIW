@@ -22,76 +22,82 @@
 		<%@ include file="standard-header.jsp"%>
 		<h:form>
 			<h3>Compilare i seguenti dati per registrare un nuovo fornitore</h3>
-			<div>
-				Nome
-				<h:inputText value="#{fornitoreController.nome}" required="true"
-					requiredMessage=" Il nome e' obbligatorio" id="nome" />
-				<h:message for="nome" />
-			</div>
-			<p>
-			<div>
-				Email
-				<h:inputText value="#{fornitoreController.email}" required="true"
-					requiredMessage=" La email e' obbligatorio" id="email" />
-				<h:message for="email" />
-			</div>
-			<p>
-			<div>
-				Numero telefono
-				<h:inputText value="#{fornitoreController.telefono}" required="true"
-					requiredMessage=" Il numero di telefono e' necessario"
-					id="telefono" />
-				<h:message for="telefono" />
-			</div>
-			<p>
-			<div>
-				Partita IVA
-				<h:inputText value="#{fornitoreController.partitaIVA}"
-					required="true" requiredMessage=" La partita IVA e' necessaria"
-					id="iva" />
-				<h:message for="iva" />
-			</div>
+			<h:panelGrid columns="3">
+				<div>
+					Nome
+					<h:inputText value="#{fornitoreController.nome}" required="true"
+						requiredMessage=" Il nome e' obbligatorio" id="nome" />
+					<h:message for="nome" />
+				</div>
+				<p>
+				<div>
+					Email
+					<h:inputText value="#{fornitoreController.email}" required="true"
+						requiredMessage=" La email e' obbligatorio" id="email" />
+					<h:message for="email" />
+				</div>
+				<p>
+				<div>
+					Numero telefono
+					<h:inputText value="#{fornitoreController.telefono}"
+						required="true"
+						requiredMessage=" Il numero di telefono e' necessario"
+						id="telefono" />
+					<h:message for="telefono" />
+				</div>
+				<p>
+				<div>
+					Partita IVA
+					<h:inputText value="#{fornitoreController.partitaIVA}"
+						required="true" requiredMessage=" La partita IVA e' necessaria"
+						id="iva" />
+					<h:message for="iva" />
+				</div>
+			</h:panelGrid>
 
 			<h4>Indirizzo</h4>
-			<div>
-				Stato
-				<h:inputText value="#{fornitoreController.stato}" required="true"
-					requiredMessage=" Campo obbligatorio" id="stato" />
-				<h:message for="stato" />
-			</div>
+			<h:panelGrid columns="3">
+				<div>
+					Stato
+					<h:inputText value="#{fornitoreController.stato}" required="true"
+						requiredMessage=" Campo obbligatorio" id="stato" />
+					<h:message for="stato" />
+				</div>
+				<p>
+				<div>
+					Citta'
+					<h:inputText value="#{fornitoreController.citta}" required="true"
+						requiredMessage=" Campo obbligatorio" id="citta" />
+					<h:message for="citta" />
+				</div>
+				<p>
+				<div>
+					Cap
+					<h:inputText value="#{fornitoreController.cap}" required="true"
+						requiredMessage=" Campo obbligatorio" id="cap" />
+					<h:message for="cap" />
+				</div>
+				<p>
+				<div>
+					Via
+					<h:inputText value="#{fornitoreController.via}" required="true"
+						requiredMessage=" Campo obbligatorio" id="via" />
+					<h:message for="via" />
+				</div>
+			</h:panelGrid>
+			<p>
+			<p>
 			<p>
 			<div>
-				Citta'
-				<h:inputText value="#{fornitoreController.citta}" required="true"
-					requiredMessage=" Campo obbligatorio" id="citta" />
-				<h:message for="citta" />
-			</div>
-			<p>
-			<div>
-				Cap
-				<h:inputText value="#{fornitoreController.cap}" required="true"
-					requiredMessage=" Campo obbligatorio" id="cap" />
-				<h:message for="cap" />
-			</div>
-			<p>
-			<div>
-				Via
-				<h:inputText value="#{fornitoreController.via}" required="true"
-					requiredMessage=" Campo obbligatorio" id="via" />
-				<h:message for="via" />
-			</div>
-			<p>
-			<p>
-			<p>
-			<div>
-				<h:commandButton value="Invia"
+				<h:commandButton styleClass="btn btn-primary" value="Invia"
 					action="#{fornitoreController.createFornitore}" />
 			</div>
 		</h:form>
 		<p>
-		<div>
-			<a href="homepage.jsp"> Homepage</a>
-		</div>
+		<p>
+		<h4>
+			Torna alla <a href="adminPage.jsp">pagina dell'admin</a>
+		</h4>
 
 	</f:view>
 
