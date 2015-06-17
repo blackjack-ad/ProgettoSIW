@@ -58,14 +58,6 @@
 							</h:commandLink>
 						</h:form></td>
 					<td>${rigaDiOrdine.quantita}</td>
-					<c:if test="${ordineController.ordine.stato eq null}">
-						<td><h:form>
-								<h:commandButton styleClass="btn btn-primary" action="#{ordineController.eliminaRiga}"
-									value="Elimina">
-									<f:param name="id" value="#{rigaDiOrdine.descrizioneProdotto.id}" />
-								</h:commandButton>
-							</h:form></td>
-					</c:if>
 					<c:if test="${ordineController.ordine.stato eq 'aperto'}">
 						<td><h:form>
 								<h:commandButton styleClass="btn btn-primary" action="#{rigaDiOrdineController.eliminaRiga}"

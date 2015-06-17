@@ -32,13 +32,12 @@
 					Fornitore
 					<h:selectManyListbox value="#{prodottoController.idFornitori}">
 						<f:selectItem itemValue="#{null}"
-							itemLabel="Seleziona un fornitore" />
+							itemLabel="-- select one or more --" />
 						<f:selectItems value="#{prodottoController.fornitori}"
 							var="fornitore" itemLabel="#{fornitore.nome}"
 							itemValue="#{fornitore.id}" />
 					</h:selectManyListbox>
 				</div>
-				<p>
 				<p>
 				<div>
 					Tipo Prodotto
@@ -51,15 +50,13 @@
 							itemValue="#{descrizione.id}" />
 					</h:selectOneMenu>
 				</div>
-			</h:panelGrid>
-			<p>
-			<p>
-			
-			<div>
-				<h:commandButton  styleClass="btn btn-primary" value="Inserisci prodotto nel magazzino"
-					action="#{prodottoController.createProdotto}" />
-			</div>
 
+				<p>
+				<div>
+					<h:commandButton value="Inserisci prodotto nel magazzino"
+						action="#{prodottoController.createProdotto}" />
+				</div>
+			</h:panelGrid>
 		</h:form>
 	</f:view>
 </body>
