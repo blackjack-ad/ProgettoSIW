@@ -29,7 +29,7 @@ public class Ordine {
 	@Column(nullable = true)
 	private Date dataEvasione;
 	
-	@OneToMany(mappedBy="ordine", cascade = {CascadeType.PERSIST, CascadeType.REMOVE,CascadeType.MERGE}, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy="ordine", cascade = {CascadeType.PERSIST, CascadeType.REMOVE,CascadeType.MERGE,CascadeType.REFRESH}, fetch=FetchType.EAGER)
 	private List<RigaDiOrdine> righeDiOrdine;
 	
 	private String stato;

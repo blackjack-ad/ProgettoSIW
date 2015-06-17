@@ -111,6 +111,10 @@
 		<c:if test="${ordineController.ordine.stato eq 'chiuso'}">
 			<td>In attesa di essere evaso</td>
 		</c:if>
+		<c:if test="${ordineController.ordine.stato eq 'sospeso'}">
+			<td>Non tutti i prodotti da te richiesti sono al momento disponibili:</td>
+			<td>cercheremo di spedire la merce il prima possibile</td>
+		</c:if>
 		<c:if test="${ordineController.ordine.stato eq 'evaso'}">
 			<td>In spedizione</td>
 		</c:if>

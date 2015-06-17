@@ -50,8 +50,11 @@
 								<div class="collapse navbar-collapse"
 									id="bs-example-navbar-collapse-1">
 									<ul class="nav navbar-nav">
-										<li><a href="faces/adminPage.jsp">Accedi come
-												amministratore</a></li>
+										<c:if test="${not loginController.loggedIn}">
+											<li><a href="faces/adminPage.jsp">Accedi come
+													amministratore</a></li>
+										</c:if>
+
 
 										<li><a href="faces/registrazioneUtente.jsp">Registrati</a></li>
 										<c:if test="${not loginController.loggedIn}">

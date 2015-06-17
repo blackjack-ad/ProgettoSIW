@@ -24,8 +24,9 @@
 							<!-- Collect the nav links, forms, and other content for toggling -->
 							<div class="collapse navbar-collapse"
 								id="bs-example-navbar-collapse-1">
-								<ul class="nav navbar-nav">
-									<li><a href="adminPage.jsp">Accedi come amministratore</a></li>
+								<ul class="nav navbar-nav"><c:if test="${not loginController.loggedIn}">
+										<li><a href="adminPage.jsp">Accedi come amministratore</a></li>
+									</c:if>
 									<li><a href="registrazioneUtente.jsp">Registrati</a></li>
 									<c:if test="${not loginController.loggedIn}">
 										<li><a href="login.jsp">Login</a></li>

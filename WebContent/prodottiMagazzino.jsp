@@ -23,7 +23,7 @@
 		<h:form>
 			<div>
 				Codice Seriale
-				<h:inputText value="#{prodottoController.codiceSeriale}"
+				<h:inputText value="#{prodottoController.codiceSeriale}" 
 					/>
 			</div>
 			<p>

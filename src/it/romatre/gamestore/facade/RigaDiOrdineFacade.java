@@ -19,6 +19,10 @@ public class RigaDiOrdineFacade {
 	private EntityManager em;
 
 	private RigaDiOrdine rdo; 
+	
+	public void createRigaDiOrdine(RigaDiOrdine rdo){
+		em.persist(rdo);
+	}
 
 	public void updateRigaDiOrdine(RigaDiOrdine riga) {
 		em.merge(riga);

@@ -4,6 +4,7 @@ import it.romatre.gamestore.dominio.Ordine;
 import it.romatre.gamestore.dominio.RigaDiOrdine;
 import it.romatre.gamestore.dominio.Utente;
 import it.romatre.gamestore.facade.OrdineFacade;
+import it.romatre.gamestore.facade.RigaDiOrdineFacade;
 import it.romatre.gamestore.facade.UtenteFacade;
 import it.romatre.gamestore.dominio.Ordine;
 import it.romatre.gamestore.dominio.RigaDiOrdine;
@@ -33,6 +34,9 @@ public class OrdineController {
 
 	@EJB
 	private OrdineFacade ordineFacade;
+	
+	@EJB
+	private RigaDiOrdineFacade rigaDiOrdineFacade;
 
 	private Date dataInizio;
 	private Date dataFine;
@@ -151,6 +155,9 @@ public class OrdineController {
 			loginController.setCreatingOrder(true);
 		}
 		r.setOrdine(ordine);
+		if(ordine.getId()!=null){
+			rigaDiOrdineFacade.createRigaDiOrdine(r);
+		}
 		ordine.addRigaDiOrdine(r);
 		fc.getExternalContext().getSessionMap().put("order",ordine);
 	}
@@ -191,6 +198,7 @@ public class OrdineController {
 	public String chiudiOrdine(){
 		Ordine o = ordineFacade.getOrdine(id);
 		o.setStato("chiuso");
+		o.setDataChiusura(new Date());
 		ordineFacade.updateOrdine(o);
 		return listOrdini();
 	}
@@ -267,6 +275,14 @@ public class OrdineController {
 
 	public void setNum(Integer num) {
 		this.num = num;
+	}
+
+	public RigaDiOrdineFacade getRigaDiOrdineFacade() {
+		return rigaDiOrdineFacade;
+	}
+
+	public void setRigaDiOrdineFacade(RigaDiOrdineFacade rigaDiOrdineFacade) {
+		this.rigaDiOrdineFacade = rigaDiOrdineFacade;
 	}
 	
 	
