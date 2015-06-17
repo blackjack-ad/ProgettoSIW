@@ -23,44 +23,49 @@
 		<h:form>
 			<h3>Compilare i seguenti dati per effettuare la registrazione</h3>
 			<h4>Inizia subito ad acquistare su GameStore</h4>
-			<div>
-				Nome
-				<h:inputText value="#{utenteController.nome}" required="true"
-					requiredMessage=" Il nome e' obbligatorio" id="nome" />
-				<h:message for="nome" />
-			</div>
 			<p>
-			<div>
-				Cognome
-				<h:inputText value="#{utenteController.cognome}" required="true"
-					requiredMessage=" Il cognome e' obbligatorio" id="cognome" />
-				<h:message for="cognome" />
-			</div>
 			<p>
-			<div>
-				Email
-				<h:inputText value="#{utenteController.email}" required="true"
-					requiredMessage=" La email e' obbligatorio" id="email" />
-				<h:message for="email" />
-			</div>
+			<h:panelGrid columns="3">
+				<div>
+					Nome
+					<h:inputText value="#{utenteController.nome}" required="true"
+						requiredMessage=" Il nome e' obbligatorio" id="nome" />
+					<h:message for="nome" />
+				</div>
+				<p>
+				<div class="form-group">
+					Cognome
+					<h:inputText value="#{utenteController.cognome}" required="true"
+						requiredMessage=" Il cognome e' obbligatorio" id="cognome" />
+					<h:message for="cognome" />
+				</div>
+				<p>
+				<div class="form-group">
+					Email
+					<h:inputText value="#{utenteController.email}" required="true"
+						requiredMessage=" La email e' obbligatorio" id="email" />
+					<h:message for="email" />
+				</div>
+				<p>
+				<div class="form-group">
+					Crea la password
+					<h:inputSecret value="#{utenteController.password}" required="true"
+						requiredMessage=" La password e' obbligatoria" id="password" />
+					<h:message for="password" />
+				</div>
+				<p>
+				<div class="form-group">
+					Numero telefono
+					<h:inputText value="#{utenteController.numeroTelefono}"
+						required="true"
+						requiredMessage=" Il numero di telefono e' necessario"
+						id="telefono" />
+					<h:message for="telefono" />
+				</div>
+			</h:panelGrid>
 			<p>
-			<div>
-				Crea la password
-				<h:inputSecret value="#{utenteController.password}" required="true"
-					requiredMessage=" La password e' obbligatoria" id="password" />
-				<h:message for="password" />
-			</div>
-			<p>
-			<div>
-				Numero telefono
-				<h:inputText value="#{utenteController.numeroTelefono}"
-					required="true"
-					requiredMessage=" Il numero di telefono e' necessario"
-					id="telefono" />
-				<h:message for="telefono" />
-			</div>
 			<h4>Data di nascita</h4>
-			<div>
+			<div class="form-group">
 				Giorno
 				<h:selectOneMenu id="giorno" value="#{utenteController.giorno}">
 					<f:selectItem id="item1" itemLabel="01" itemValue="1" />
@@ -116,41 +121,46 @@
 					requiredMessage=" Campo obbligatorio" id="anno" />
 				<h:message for="anno" />
 			</div>
+			<p>
 			<h4>Indirizzo di residenza</h4>
-			<div>
-				Stato
-				<h:inputText value="#{utenteController.stato}" required="true"
-					requiredMessage=" Campo obbligatorio" id="stato" />
-				<h:message for="stato" />
-			</div>
+			<h:panelGrid columns="3">
+				<div>
+					Stato
+					<h:inputText value="#{utenteController.stato}" required="true"
+						requiredMessage=" Campo obbligatorio" id="stato" />
+					<h:message for="stato" />
+				</div>
+				<p>
+				<div class="form-group">
+					Citta'
+					<h:inputText value="#{utenteController.citta}" required="true"
+						requiredMessage=" Campo obbligatorio" id="citta" />
+					<h:message for="citta" />
+				</div>
+				<p>
+				<div class="form-group">
+					Cap
+					<h:inputText value="#{utenteController.cap}" required="true"
+						requiredMessage=" Campo obbligatorio" id="cap" />
+					<h:message for="cap" />
+				</div>
+				<p>
+				<div class="form-group">
+					Via
+					<h:inputText value="#{utenteController.via}" required="true"
+						requiredMessage=" Campo obbligatorio" id="via" />
+					<h:message for="via" />
+				</div>
+			</h:panelGrid>
+
+			<p>
 			<p>
 			<div>
-				Citta'
-				<h:inputText value="#{utenteController.citta}" required="true"
-					requiredMessage=" Campo obbligatorio" id="citta" />
-				<h:message for="citta" />
-			</div>
-			<p>
-			<div>
-				Cap
-				<h:inputText value="#{utenteController.cap}" required="true"
-					requiredMessage=" Campo obbligatorio" id="cap" />
-				<h:message for="cap" />
-			</div>
-			<p>
-			<div>
-				Via
-				<h:inputText value="#{utenteController.via}" required="true"
-					requiredMessage=" Campo obbligatorio" id="via" />
-				<h:message for="via" />
-			</div>
-			<p>
-			<p>
-			<div>
-				<h:commandButton value="Invia"
+				<h:commandButton styleClass="btn btn-primary" value="Invia"
 					action="#{utenteController.createUtente}" />
 			</div>
 		</h:form>
+		<p>
 		<p>
 		<div>
 
@@ -161,9 +171,12 @@
 				<li>Accetto il trattamento dei miei dati personali</li>
 			</ul>
 		</div>
-		<div>
-			<a href="homepage.jsp"> Homepage</a>
-		</div>
+		<p>
+		<h4>
+			Sei già registrato? Effettua ora il <a href="login.jsp">login</a> Non
+			vuoi registrarti? Puoi tornare alla <a href="homepage.jsp">homepage</a>
+
+		</h4>
 
 	</f:view>
 

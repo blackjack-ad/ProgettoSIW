@@ -38,28 +38,44 @@
 <body>
 
 	<f:view>
+		<%@ include file="standard-header.jsp"%>
 
 		<h:form>
+	
 			<h1>Inserisci i dati del prodotto da inserire nel catalogo</h1>
+			<p>
+			<p>
+				<h:panelGrid columns="2">
 			<div>
-				Nome:
+				Nome
 				<h:inputText value="#{descrizioneProdottoController2.nome}" />
 			</div>
+			<p>
 			<div>
-				Prezzo:
+				Prezzo
 				<h:inputText value="#{descrizioneProdottoController2.prezzo}" />
 			</div>
+			<p>
 			<div>
-				Descrizione:
+				Descrizione
 				<h:inputText value="#{descrizioneProdottoController2.descrizione}" />
 			</div>
+			</h:panelGrid>
+			<p>
 			<div>
-				<h:commandButton value="Inserisci"
+				<h:commandButton styleClass="btn btn-primary" value="Inserisci"
 					action="#{descrizioneProdottoController2.createDescrizioneProdotto}" />
 			</div>
-			<h:commandLink
-				action="#{descrizioneProdottoController2.listDescrizioneProdotti}"
-				value="List all Products" />
+			<p>
+			<p>
+			<p>
+			<p>
+			<h4>
+				Torna ai prodotti in
+				<h:commandLink
+					action="#{descrizioneProdottoController2.listDescrizioneProdotti}"
+					value="catalogo" />
+			</h4>
 		</h:form>
 
 	</f:view>

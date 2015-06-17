@@ -34,7 +34,7 @@ public class Ordine {
 	
 	private String stato;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	private Utente utente;
 
 	public Ordine() {

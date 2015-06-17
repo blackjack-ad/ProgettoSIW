@@ -46,6 +46,7 @@ public class OrdineController {
 	private Integer num;
 	private List<Ordine> ordini;
 
+
 	//	public String creaOrdine() {
 	//		FacesContext fc = FacesContext.getCurrentInstance();
 	//		Utente utenteCorrente = (Utente)fc.getExternalContext().getSessionMap().get("user");
@@ -171,6 +172,46 @@ public class OrdineController {
 		loginController.setCreatingOrder(false);
 		return "ordine";
 	}
+	
+	public String eliminaRiga(){
+		FacesContext fc = FacesContext.getCurrentInstance();
+		ordine = (Ordine)fc.getExternalContext().getSessionMap().get("order");
+		System.out.println("descId =" + id);
+		
+		for(int i= 0 ; i<ordine.getRigheDiOrdine().size(); i++){
+			
+			RigaDiOrdine rdo = ordine.getRigheDiOrdine().get(i);
+			
+			System.out.println(rdo.getDescrizioneProdotto().getId());
+			Long temp = rdo.getDescrizioneProdotto().getId();
+			if(temp.compareTo(id)==0){
+				ordine.getRigheDiOrdine().remove(i);
+			}
+		}
+		fc.getExternalContext().getSessionMap().put("order",ordine);
+		setOrdine(ordine);
+		return "ordine";
+	}
+	
+	public String eliminaRiga(Long descId){
+		FacesContext fc = FacesContext.getCurrentInstance();
+		ordine = (Ordine)fc.getExternalContext().getSessionMap().get("order");
+		System.out.println("descId =" + descId);
+		
+		for(int i= 0 ; i<ordine.getRigheDiOrdine().size(); i++){
+			
+			RigaDiOrdine rdo = ordine.getRigheDiOrdine().get(i);
+			
+			System.out.println(rdo.getDescrizioneProdotto().getId());
+			Long temp = rdo.getDescrizioneProdotto().getId();
+			if(temp.compareTo(descId)==0){
+				ordine.getRigheDiOrdine().remove(i);
+			}
+		}
+		fc.getExternalContext().getSessionMap().put("order",ordine);
+		setOrdine(ordine);
+		return "ordine";
+	}
 
 	public String findOrdine() {
 		this.ordine = ordineFacade.getOrdine(id);
@@ -200,7 +241,7 @@ public class OrdineController {
 		o.setStato("chiuso");
 		o.setDataChiusura(new Date());
 		ordineFacade.updateOrdine(o);
-		return listOrdini();
+		return listOrdiniUtente();
 	}
 
 	public String chiudiOrdine(Long id){
@@ -208,7 +249,7 @@ public class OrdineController {
 		o.setStato("chiuso");
 		o.setDataChiusura(new Date());
 		ordineFacade.updateOrdine(o);
-		return listOrdini();
+		return listOrdiniUtente();
 	}
 
 	public LoginController getLoginController() {
@@ -284,6 +325,7 @@ public class OrdineController {
 	public void setRigaDiOrdineFacade(RigaDiOrdineFacade rigaDiOrdineFacade) {
 		this.rigaDiOrdineFacade = rigaDiOrdineFacade;
 	}
+
 	
 	
 }

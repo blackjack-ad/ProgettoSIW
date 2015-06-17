@@ -22,14 +22,6 @@
 <!-- Bootstrap core CSS -->
 <link href="ubuntu/bootstrap.min.css" rel="stylesheet">
 
-<!-- Custom styles for this template -->
-
-
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 <link
 	href='http://fonts.googleapis.com/css?family=Josefin+Sans:400,700,100italic'
 	rel='stylesheet' type='text/css'>
@@ -39,7 +31,7 @@
 	<f:view>
 		<%@ include file="standard-header.jsp"%>
 		<h1>I miei ordini</h1>
-		<table>
+		<table class="table table-hover">
 			<tr>
 				<th>Codice</th>
 				<th>Data Apertura</th>
@@ -57,7 +49,7 @@
 					<td>${ordine.stato}</td>
 					<c:if test="${ordine.stato eq 'aperto'}">
 						<td><h:form>
-								<h:commandButton action="#{ordineController.chiudiOrdine}"
+								<h:commandButton styleClass="btn btn-primary" action="#{ordineController.chiudiOrdine}"
 									value="Chiudi">
 									<f:param name="id" value="#{ordine.id}" />
 								</h:commandButton>

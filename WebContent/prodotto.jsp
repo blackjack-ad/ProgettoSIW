@@ -20,7 +20,13 @@
 
 	<f:view>
 		<%@ include file="standard-header.jsp"%>
-		PRODOTTO INSERITO IN MAGAZZINO
+		<h2>Prodotto inserito correttamente nel magazzino</h2>
+		<p>
+		<p>
+		<h4>
+			Torna alla pagina di inserimento dei prodotti in <a href="prodottiMagazzino.jsp">magazzino</a> oppure alla pagina dell'<a
+				href="adminPage.jsp"> admin</a>
+		</h4>
 	</f:view>
 </body>
 </html>

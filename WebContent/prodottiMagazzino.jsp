@@ -21,11 +21,39 @@
 	<f:view>
 		<%@ include file="standard-header.jsp"%>
 		<h:form>
-			<div>
-				Codice Seriale
-				<h:inputText value="#{prodottoController.codiceSeriale}" 
-					/>
-			</div>
+			<h:panelGrid columns="2">
+				<div>
+					Codice Seriale
+					<h:inputText value="#{prodottoController.codiceSeriale}" />
+				</div>
+				<p>
+				<p>
+				<div>
+					Fornitore
+					<h:selectManyListbox value="#{prodottoController.idFornitori}">
+						<f:selectItem itemValue="#{null}"
+							itemLabel="Seleziona un fornitore" />
+						<f:selectItems value="#{prodottoController.fornitori}"
+							var="fornitore" itemLabel="#{fornitore.nome}"
+							itemValue="#{fornitore.id}" />
+					</h:selectManyListbox>
+				</div>
+				<p>
+				<p>
+				<div>
+					Tipo Prodotto
+					<h:selectOneMenu
+						value="#{prodottoController.idDescrizioneProdotto}">
+						<f:selectItem itemValue="#{null}"
+							itemLabel="Seleziona un prodotto" />
+						<f:selectItems value="#{prodottoController.descrizioneProdotti}"
+							var="descrizione" itemLabel="#{descrizione.nome}"
+							itemValue="#{descrizione.id}" />
+					</h:selectOneMenu>
+				</div>
+			</h:panelGrid>
+			<p>
+			<p>
 			<p>
 			<div>
 				Fornitore

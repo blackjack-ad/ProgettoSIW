@@ -33,7 +33,7 @@
 			<p>
 			<p>
 			<div>
-				<h:commandButton value="Logout" action="#{loginController.logout}" />
+				<h:commandButton styleClass="btn btn-primary" value="Logout" action="#{loginController.logout}" />
 			</div>
 		</h:form>
 	</f:view>

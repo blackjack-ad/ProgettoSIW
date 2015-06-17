@@ -40,7 +40,7 @@
 	<f:view>
 		<%@ include file="standard-header.jsp"%>
 		<h1>Catalogo</h1>
-		<table>
+		<table class="table table-hover">
 			<tr>
 				<th>Nome</th>
 				<th>Prezzo</th>
@@ -59,7 +59,7 @@
 					<c:if test="${loginController.loggedIn}">
 						<td><h:form>
 								<h:inputText value="#{descrizioneProdottoController2.quantita}"></h:inputText>
-								<h:commandButton
+								<h:commandButton styleClass="btn btn-primary"
 									action="#{descrizioneProdottoController2.creaRigaDiOrdine}"
 									value="Acquista">
 									<f:param name="id" value="#{descrizioneProdotto.id}" />
